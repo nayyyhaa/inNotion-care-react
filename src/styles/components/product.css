@@ -1,0 +1,41 @@
+.product-item {
+  position: relative;
+  color: var(--COLOR-GREY-DARK);
+}
+
+.product-media {
+  overflow: hidden;
+}
+
+.product-action {
+  position: relative;
+  margin-top: -1.8rem;
+  margin-left: 1rem;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.product-img {
+  height: 45vh;
+  opacity: 0.85;
+  transition: all 0.3s ease-in-out;
+}
+
+.product-img:hover,
+.product-img:focus {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+.product-btn i {
+  transition: all 0.3s ease-in-out;
+}
+
+.product-btn:hover i {
+  margin-left: 1rem;
+}
+
