@@ -1,39 +1,28 @@
+import { FooterData } from "../data";
+
 export const Footer = () => {
+  const { shop, information, socials } = FooterData;
   return (
     <footer className="connect footer p-3 col-flex">
       <div className="contact-content row-flex w-90p m-b-1">
         <div className="footer-item col-flex m-2">
           <h3 className="m-b-3">SHOP</h3>
           <ul className="footer-item-links left-text no-bullet">
-            <li className="m-b-1">
-              <a className="grey-text cursor">Body Essentials</a>
-            </li>
-            <li className="m-b-1">
-              <a className="grey-text cursor">Vegan Products</a>
-            </li>
-            <li className="m-b-1">
-              <a className="grey-text cursor">Room Decors</a>
-            </li>
-            <li className="m-b-1">
-              <a className="grey-text cursor">Mists</a>
-            </li>
+            {shop?.map(({ id, title }) => (
+              <li className="m-b-1" key={id}>
+                <a className="grey-text cursor">{title}</a>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="footer-item col-flex m-2">
           <h3 className="m-b-3">INFORMATION</h3>
           <ul className="footer-item-links left-text no-bullet">
-            <li className="m-b-1">
-              <a className="grey-text cursor">Contact</a>
-            </li>
-            <li className="m-b-1">
-              <a className="grey-text cursor">Shipping</a>
-            </li>
-            <li className="m-b-1">
-              <a className="grey-text cursor">Account</a>
-            </li>
-            <li className="m-b-1">
-              <a className="grey-text cursor">FAQs</a>
-            </li>
+            {information?.map(({ id, title }) => (
+              <li className="m-b-1" key={id}>
+                <a className="grey-text cursor">{title}</a>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="contact-action col-flex m-2">
@@ -62,18 +51,11 @@ export const Footer = () => {
             </div>
           </form>
           <div className="contact-socials left-text full-wd m-v-1">
-            <a className="icon-btn footer-icon grey-text p-1" href="mailto:nehaguptang.ng@gmail.com">
-              <i className="fa fa-envelope" title="envelope" alt="envelope"></i>
-            </a>
-            <a className="icon-btn footer-icon grey-text p-1" href="https://www.github.com/nayyyhaa">
-              <i className="fa fa-github" title="github" alt="github"></i>
-            </a>
-            <a className="icon-btn footer-icon grey-text p-1" href="https://www.twitter.com/nayyyhaa">
-              <i className="fa fa-twitter" title="twitter" alt="twitter"></i>
-            </a>
-            <a className="icon-btn footer-icon grey-text p-1" href="https://www.instagram.com/nehacode">
-              <i className="fa fa-instagram" title="instagram" alt="instagram"></i>
-            </a>
+            {socials?.map(({ id, title, icon, link }) => (
+              <a key={id} className="icon-btn footer-icon grey-text p-1" href={link}>
+                <i className={icon} title={title} alt={title}></i>
+              </a>
+            ))}
           </div>
         </div>
       </div>
