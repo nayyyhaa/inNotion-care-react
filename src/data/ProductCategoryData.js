@@ -4,21 +4,24 @@ import soul from "../assets/soul-product.jpg";
 
 export const ProductCategoryData = [
   {
-    id: 1,
+    id: "vegan",
     name: "FOR NATURE",
     description: "Shop Naturals",
-    image: nature
+    image: nature,
+    link: "/products",
   },
   {
-    id: 2,
+    id: "body",
     name: "FOR BODY",
     description: "Shop Bodylicious",
-    image: body
+    image: body,
+    link: "/products",
   },
   {
-    id: 1,
+    id: "soul",
     name: "FOR SOUL",
     description: "Shop Soulfulness",
-    image: soul
-  }
+    image: soul,
+    link: "/products",
+  },
 ];

@@ -3,15 +3,10 @@ export const NavbarData = {
     {
       id: 1,
       title: "Shop",
-      link: "products",
+      link: "/products",
     },
     {
       id: 2,
-      title: "Care products",
-      link: "products",
-    },
-    {
-      id: 3,
       title: "About",
       link: "pages/products.html",
     },
