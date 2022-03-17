@@ -13,7 +13,7 @@ export const ProductListingData = [
     ratingNo: 99,
     image: insense,
     inStock: true,
-    category: ["room"]
+    category: ["room", "soul"],
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ export const ProductListingData = [
     ratingNo: 9,
     image: facemask,
     inStock: true,
-    category: ["body", "vegan"]
+    category: ["body", "vegan"],
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ export const ProductListingData = [
     ratingNo: 29,
     image: highlighter,
     inStock: true,
-    category: ["body", "vegan"]
+    category: ["body", "vegan"],
   },
   {
     id: 4,
@@ -46,21 +46,25 @@ export const ProductListingData = [
     ratingNo: 99,
     image: bathbomb,
     inStock: false,
-    category: ["body", "vegan"]
-  }
+    category: ["body", "vegan", "soul"],
+  },
 ];
 
 export const CategoriesData = [
   {
     id: "body",
-    name: "Body Essentials"
+    name: "Body Essentials",
   },
   {
     id: "room",
-    name: "Room Decor"
+    name: "Room Decor",
   },
   {
     id: "vegan",
-    name: "Vegan friendly"
-  }
+    name: "Vegan friendly",
+  },
+  {
+    id: "soul",
+    name: "Care products",
+  },
 ];
