@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { NavbarData } from "../data";
+
 export const Navbar = () => {
   const { categories, navbarActions } = NavbarData;
+  const [isNavVisible, setNavVisible] = useState(false);
+
   return (
     <header className="header fixed-header">
       <nav className="navbar row-flex w-95p m-auto p-05">
@@ -10,7 +14,7 @@ export const Navbar = () => {
             in.notion <span className="text-shd">Care</span>
           </h3>
         </a>
-        <ul className="nav-items row-flex w-40p no-bullet">
+        <ul className={`nav-items row-flex w-40p no-bullet ${isNavVisible ? "show-nav" : ""}`}>
           {categories?.map(({ id, title, link }) => (
             <li key={id} className="btn nav-link-btn cursor h3">
               <a href={link}>{title}</a>
@@ -35,8 +39,11 @@ export const Navbar = () => {
               </li>
             ))}
           </ul>
-          <div className="hamburger icon-toggle icon-btn rd-bdr grid-ctr wt-text m-r-1">
-            <i className="fa fa-bars" aria-hidden="true"></i>
+          <div
+            className="hamburger icon-toggle icon-btn rd-bdr grid-ctr wt-text m-r-1"
+            onClick={() => setNavVisible((prev) => !prev)}
+          >
+            <i className={`${isNavVisible ? "fa fa-times" : "fa fa-bars"}`} aria-hidden="true"></i>
           </div>
         </div>
       </nav>

@@ -6,3 +6,4 @@ export { Marquee } from "./Marquee";
 export { Navbar } from "./Navbar";
 export { SiteHeader } from "./SiteHeader";
 export { ProductsListing } from "./ProductsListing";
+export { ProductFilterSidebar } from "./ProductFilterSidebar";
