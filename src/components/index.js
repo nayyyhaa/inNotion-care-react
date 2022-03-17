@@ -1,4 +1,6 @@
 export { Card } from "./Card";
+export { CartCard } from "./CartCard";
+export { CartSidebar } from "./CartSidebar";
 export { FeatureCategories } from "./FeatureCategories";
 export { Footer } from "./Footer";
 export { HeaderAnnouncement } from "./HeaderAnnouncement";
