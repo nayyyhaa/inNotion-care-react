@@ -42,22 +42,17 @@ export const Card = ({ product }) => {
           </div>
         ) : (
           <div className="quantity-selector row-flex no-wrap full-height">
-            <i
-              className="fa fa-trash-o light-font m-r-2 red-text"
-              aria-hidden="true"
-              onClick={() => dispatchCart({ type: "DELETEFROMCART", payload: product })}
-            ></i>
-            <i
-              className="fa fa-minus light-font m-r-2"
-              aria-hidden="true"
-              onClick={() => dispatchCart({ type: "DECREMENTFROMCART", payload: product })}
-            ></i>
+            <button className="icon-btn" onClick={() => dispatchCart({ type: "DELETEFROMCART", payload: product })}>
+              <i className="fa fa-trash-o light-font m-r-2 red-text" aria-hidden="true"></i>
+            </button>
+            <button className="icon-btn" onClick={() => dispatchCart({ type: "DECREMENTFROMCART", payload: product })}>
+              <i className="fa fa-minus light-font m-r-2" aria-hidden="true"></i>
+            </button>
             <p className="quantity m-r-2 h3">{cartItem?.count}</p>
-            <i
-              className="fa fa-plus light-font"
-              aria-hidden="true"
-              onClick={() => dispatchCart({ type: "ADDTOCART", payload: product })}
-            ></i>
+
+            <button className="icon-btn" onClick={() => dispatchCart({ type: "ADDTOCART", payload: product })}>
+              <i className="fa fa-plus light-font" aria-hidden="true"></i>
+            </button>
           </div>
         )}
         <div className="card-icons">
