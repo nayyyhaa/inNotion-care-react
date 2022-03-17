@@ -9,7 +9,7 @@ export const ProductFilterSidebar = ({ showFilterBar }) => {
       <div className={`side-bar product-sidebar box-shd w-20p ${showFilterBar ? "show-filter" : ""}`}>
         <div className="side-bar-title title row-flex p-v-2 p-h-3">
           <p>Filters</p>
-          <p className="clear-all cursor" onClick={() => dispatchFilter({ type: "CLEARALL" })}>
+          <p className="clear-all cursor" onClick={() => dispatchFilter({ type: "CLEAR_ALL" })}>
             Clear all
           </p>
           <p className="icon-toggle icon-btn sidebar-close rd-bdr grid-ctr colored-text">
@@ -31,7 +31,7 @@ export const ProductFilterSidebar = ({ showFilterBar }) => {
                     checked={categories.includes(id)}
                     onChange={(e) =>
                       dispatchFilter({
-                        type: "SETCATEGORIES",
+                        type: "SET_CATEGORIES",
                         payload: {
                           type: id,
                           isChecked: e.target.checked,
@@ -85,7 +85,7 @@ export const ProductFilterSidebar = ({ showFilterBar }) => {
                 max="1000"
                 onChange={(e) =>
                   dispatchFilter({
-                    type: "SETPRICERANGE",
+                    type: "SET_PRICE_RANGE",
                     payload: e.target.value,
                   })
                 }
@@ -104,7 +104,7 @@ export const ProductFilterSidebar = ({ showFilterBar }) => {
                 checked={includeOutOfStock}
                 onChange={() =>
                   dispatchFilter({
-                    type: "TOGGLEOUTOFSTOCK",
+                    type: "TOGGLE_OUT_OF_STOCK",
                   })
                 }
               />
@@ -125,7 +125,7 @@ export const ProductFilterSidebar = ({ showFilterBar }) => {
                     checked={ratingRange === rt}
                     onChange={() =>
                       dispatchFilter({
-                        type: "SETRATINGRANGE",
+                        type: "SET_RATING_RANGE",
                         payload: rt,
                       })
                     }

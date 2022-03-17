@@ -1,23 +1,27 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useCart } from "../contexts/CartContext";
+import { useWishlist } from "../contexts/WishlistContext";
 import { NavbarData } from "../data";
 
 export const Navbar = () => {
   const { categories, navbarActions } = NavbarData;
   const [isNavVisible, setNavVisible] = useState(false);
+  const { wishlist } = useWishlist();
+  const { cart } = useCart();
 
   return (
     <header className="header fixed-header">
       <nav className="navbar row-flex w-95p m-auto p-05">
-        <a className="m-l-3" href="/">
+        <Link className="m-l-3" to="/">
           <h3 id="logo">
             in.notion <span className="text-shd">Care</span>
           </h3>
-        </a>
+        </Link>
         <ul className={`nav-items row-flex w-40p no-bullet ${isNavVisible ? "show-nav" : ""}`}>
           {categories?.map(({ id, title, link }) => (
             <li key={id} className="btn nav-link-btn cursor h3">
-              <a href={link}>{title}</a>
+              <Link to={link}>{title}</Link>
             </li>
           ))}
         </ul>
@@ -33,7 +37,11 @@ export const Navbar = () => {
               <li key={id} className="nav-icon-btn icon-btn rd-bdr grid-ctr wt-text m-r-3">
                 <Link to={link} className="badge-wrapper grid-ctr">
                   <i className={icon} aria-hidden="true"></i>
-                  {hasIconBadge && <span className="badge wt-text grid-ctr red-content">1</span>}
+                  {hasIconBadge && (
+                    <span className="badge wt-text grid-ctr red-content">
+                      {title === "Wishlist" ? wishlist.length : cart.length}
+                    </span>
+                  )}
                   <span className="nav-icon-text h6 cursor wt-text">{title}</span>
                 </Link>
               </li>

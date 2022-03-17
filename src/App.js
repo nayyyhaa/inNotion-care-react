@@ -2,7 +2,9 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Homepage, Authorisation, WishlistPage, ProductListingsPage, CartPage, PageNotFound } from "./pages";
 import { HeaderAnnouncement, Footer, Navbar } from "./components";
+import { usePageViewTracker } from "./utils/usePageViewTracker";
 function App() {
+  usePageViewTracker();
   return (
     <>
       <HeaderAnnouncement />
