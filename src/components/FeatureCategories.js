@@ -19,7 +19,7 @@ export const FeatureCategories = () => {
               className="product-item cursor left-text m-v-2 m-h-3"
               onClick={() =>
                 dispatchFilter({
-                  type: "SETCATEGORIES",
+                  type: "SET_CATEGORIES",
                   payload: {
                     type: id,
                     isChecked: true,

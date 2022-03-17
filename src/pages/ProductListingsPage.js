@@ -45,7 +45,7 @@ export const ProductListingsPage = () => {
         </p>
         <p
           className="filter-bar-item clear-all cursor w-50p grid-ctr"
-          onClick={() => dispatchFilter({ type: "CLEARALL" })}
+          onClick={() => dispatchFilter({ type: "CLEAR_ALL" })}
         >
           Clear all
         </p>

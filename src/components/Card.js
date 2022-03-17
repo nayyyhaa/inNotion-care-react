@@ -12,7 +12,7 @@ export const Card = ({ product }) => {
       <button className="card-icon-btn icon-btn rd-bdr heart-btn">
         <i
           className={`fa fa-heart${!wishlist.includes(product) ? "-o" : ""}`}
-          onClick={() => dispatchWishlist({ type: "TOGGLEWISHLIST", payload: product })}
+          onClick={() => dispatchWishlist({ type: "TOGGLE_WISHLIST", payload: product })}
           aria-hidden="true"
         ></i>
       </button>
@@ -34,7 +34,7 @@ export const Card = ({ product }) => {
           <div className="card-btns">
             <button
               className="btn primary-btn m-r-1"
-              onClick={() => dispatchCart({ type: "ADDTOCART", payload: product })}
+              onClick={() => dispatchCart({ type: "ADD_TO_CART", payload: product })}
             >
               <i className="fa fa-shopping-cart" aria-hidden="true"></i>
               <span className="p-l-1">Add to cart</span>
@@ -42,15 +42,18 @@ export const Card = ({ product }) => {
           </div>
         ) : (
           <div className="quantity-selector row-flex no-wrap full-height">
-            <button className="icon-btn" onClick={() => dispatchCart({ type: "DELETEFROMCART", payload: product })}>
+            <button className="icon-btn" onClick={() => dispatchCart({ type: "DELETE_FROM_CART", payload: product })}>
               <i className="fa fa-trash-o light-font m-r-2 red-text" aria-hidden="true"></i>
             </button>
-            <button className="icon-btn" onClick={() => dispatchCart({ type: "DECREMENTFROMCART", payload: product })}>
+            <button
+              className="icon-btn"
+              onClick={() => dispatchCart({ type: "DECREMENT_FROM_CART", payload: product })}
+            >
               <i className="fa fa-minus light-font m-r-2" aria-hidden="true"></i>
             </button>
             <p className="quantity m-r-2 h3">{cartItem?.count}</p>
 
-            <button className="icon-btn" onClick={() => dispatchCart({ type: "ADDTOCART", payload: product })}>
+            <button className="icon-btn" onClick={() => dispatchCart({ type: "ADD_TO_CART", payload: product })}>
               <i className="fa fa-plus light-font" aria-hidden="true"></i>
             </button>
           </div>

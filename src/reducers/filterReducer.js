@@ -2,20 +2,20 @@ export const filterReducer = (state, action) => {
   switch (action.type) {
     case "SORT":
       return { ...state, sortBy: action.payload };
-    case "TOGGLEOUTOFSTOCK":
+    case "TOGGLE_OUT_OF_STOCK":
       return { ...state, includeOutOfStock: !state.includeOutOfStock };
-    case "SETPRICERANGE":
+    case "SET_PRICE_RANGE":
       return { ...state, maxPriceRange: action.payload };
-    case "SETRATINGRANGE":
+    case "SET_RATING_RANGE":
       return { ...state, ratingRange: action.payload };
-    case "SETCATEGORIES":
+    case "SET_CATEGORIES":
       return {
         ...state,
         categories: action.payload.isChecked
           ? [...state.categories, action.payload.type]
           : state.categories.filter((cat) => cat !== action.payload.type),
       };
-    case "CLEARALL":
+    case "CLEAR_ALL":
       return {
         sortBy: null,
         includeOutOfStock: true,

@@ -6,9 +6,9 @@ export const usePageViewTracker = () => {
   const location = useLocation();
   const [lastLocation, setLastLocation] = useState("");
   const { dispatchFilter } = useFilter();
-  
+
   useEffect(() => {
-    if (lastLocation.pathname === "/products") dispatchFilter({ type: "CLEARALL" });
+    if (lastLocation.pathname === "/products") dispatchFilter({ type: "CLEAR_ALL" });
     setLastLocation(location);
   }, [location]);
 
