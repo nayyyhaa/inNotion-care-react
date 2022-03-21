@@ -3,12 +3,12 @@ import { useWishlist } from "../contexts/WishlistContext";
 export const CartCard = ({ product }) => {
   const { wishlist, dispatchWishlist } = useWishlist();
   const { dispatchCart } = useCart();
-  const { name, image, count, price } = product;
+  const { title, image, count, price } = product;
   const wishlistIndex = wishlist.findIndex((el) => el.id === product.id);
   return (
     <>
       <div className="card hz-card cart-card left-text row-flex text-wrap w-80p h-20rm m-v-2">
-        <img className="cart-card-img h-20rm w-35p" src={image} alt={name} />
+        <img className="cart-card-img h-20rm w-35p" src={image} alt={title} />
         <button className="card-icon-btn cart-wishlist icon-btn rd-bdr heart-btn">
           <i
             className={`fa fa-heart${wishlistIndex < 0 ? "-o" : ""}`}
@@ -17,7 +17,7 @@ export const CartCard = ({ product }) => {
           ></i>
         </button>
         <div className="card-header-text cart-card-header h-25rm col-flex flex-start no-wrap">
-          <h2 className="card-title h3">{name}</h2>
+          <h2 className="card-title h3">{title}</h2>
           <small className="card-text sub-heading-light m-b-2">Sold by: Nene Stores</small>
           <div className="quantity-selector row-flex no-wrap m-b-2">
             <button className="icon-btn" onClick={() => dispatchCart({ type: "DELETE_FROM_CART", payload: product })}>

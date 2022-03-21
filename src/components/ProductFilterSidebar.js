@@ -1,9 +1,11 @@
+import { useCategories } from "../contexts/CategoriesContext";
 import { useFilter } from "../contexts/FilterContext";
-import { CategoriesData } from "../data";
 
 export const ProductFilterSidebar = ({ showFilterBar }) => {
   const { filter, dispatchFilter } = useFilter();
-  const { sortBy, includeOutOfStock, maxPriceRange, categories, ratingRange } = filter;
+  const { categories } = useCategories();
+  const categoriesData = categories.reduce((acc, curr) => [...acc, ...curr.subCategories], []);
+  const { sortBy, includeOutOfStock, maxPriceRange, categoriesSelected, ratingRange } = filter;
   return (
     <>
       <div className={`side-bar product-sidebar box-shd w-20p ${showFilterBar ? "show-filter" : ""}`}>
@@ -19,27 +21,27 @@ export const ProductFilterSidebar = ({ showFilterBar }) => {
         </div>
         <ul className="sidebar-items no-bullet col-flex flex-start no-wrap p-h-2 m-b-3">
           <li className="filter-list p-l-2 m-v-1">CATEGORIES</li>
-          {CategoriesData?.map(({ id, name }) => {
+          {categoriesData?.map(({ _id, tag, title }) => {
             return (
-              <li key={id} className="filter-item p-l-2 m-v-05">
+              <li key={_id} className="filter-item p-l-2 m-v-05">
                 <label className="categories sub-heading">
                   <input
                     type="checkbox"
                     className="checkbox-input m-r-1"
-                    name={name}
-                    id={id}
-                    checked={categories.includes(id)}
+                    title={title}
+                    id={_id}
+                    checked={categoriesSelected.includes(tag)}
                     onChange={(e) =>
                       dispatchFilter({
                         type: "SET_CATEGORIES",
                         payload: {
-                          type: id,
+                          type: tag,
                           isChecked: e.target.checked,
                         },
                       })
                     }
                   />
-                  {name}
+                  {title}
                 </label>
               </li>
             );
@@ -51,7 +53,7 @@ export const ProductFilterSidebar = ({ showFilterBar }) => {
               <input
                 type="radio"
                 className="radio-input m-r-1"
-                name="price"
+                title="price"
                 checked={sortBy === "LOWTOHIGH"}
                 onChange={() => dispatchFilter({ type: "SORT", payload: "LOWTOHIGH" })}
               />
@@ -63,7 +65,7 @@ export const ProductFilterSidebar = ({ showFilterBar }) => {
               <input
                 type="radio"
                 className="radio-input m-r-1"
-                name="price"
+                title="price"
                 checked={sortBy === "HIGHTOLOW"}
                 onChange={() => dispatchFilter({ type: "SORT", payload: "HIGHTOLOW" })}
               />
@@ -100,7 +102,7 @@ export const ProductFilterSidebar = ({ showFilterBar }) => {
               <input
                 type="checkbox"
                 className="checkbox-input m-r-1"
-                name="inStock"
+                title="inStock"
                 checked={includeOutOfStock}
                 onChange={() =>
                   dispatchFilter({
@@ -120,7 +122,7 @@ export const ProductFilterSidebar = ({ showFilterBar }) => {
                   <input
                     type="radio"
                     className="radio-input m-r-1"
-                    name="rating"
+                    title="rating"
                     value={`${rt}_stars`}
                     checked={ratingRange === rt}
                     onChange={() =>

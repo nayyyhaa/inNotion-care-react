@@ -1,18 +1,19 @@
 import { useState } from "react";
-import { ProductListingData } from "../data";
 import bathbomb from "../assets/bath-bomb.jpg";
 import { Card, ProductFilterSidebar } from "../components";
 import { useFilter } from "../contexts/FilterContext";
 import { sort, filterBy, filterCategories, priceRange, setRating } from "../utils";
+import { useProducts } from "../contexts/ProductsContext";
 
 export const ProductListingsPage = () => {
+  const { products } = useProducts();
   const [showFilterBar, setShowFilterBar] = useState(false);
   const { filter, dispatchFilter } = useFilter();
-  const { sortBy, maxPriceRange, ratingRange, categories } = filter;
-  const sortedData = sort(ProductListingData, sortBy);
+  const { sortBy, maxPriceRange, ratingRange, categoriesSelected } = filter;
+  const sortedData = sort(products, sortBy);
   const priceRangeData = priceRange(sortedData, maxPriceRange);
   const ratingData = setRating(priceRangeData, ratingRange);
-  const catogorisedData = filterCategories(ratingData, categories);
+  const catogorisedData = filterCategories(ratingData, categoriesSelected);
   const finalData = filterBy(catogorisedData, filter);
   return (
     <>

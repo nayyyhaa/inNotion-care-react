@@ -7,19 +7,25 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { FilterProvider } from "./contexts/FilterContext";
 import { WishlistProvider } from "./contexts/WishlistContext";
 import { CartProvider } from "./contexts/CartContext";
+import { ProductsProvider } from "./contexts/ProductsContext";
+import { CategoriesProvider } from "./contexts/CategoriesContext";
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <FilterProvider>
-        <WishlistProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
-        </WishlistProvider>
-      </FilterProvider>
+      <ProductsProvider>
+        <CategoriesProvider>
+          <FilterProvider>
+            <WishlistProvider>
+              <CartProvider>
+                <App />
+              </CartProvider>
+            </WishlistProvider>
+          </FilterProvider>
+        </CategoriesProvider>
+      </ProductsProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

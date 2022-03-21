@@ -8,7 +8,7 @@ const FilterProvider = ({ children }) => {
     sortBy: null,
     includeOutOfStock: true,
     maxPriceRange: 1000,
-    categories: [],
+    categoriesSelected: [],
     rating: null,
   });
   return <FilterContext.Provider value={{ filter, dispatchFilter }}>{children}</FilterContext.Provider>;
