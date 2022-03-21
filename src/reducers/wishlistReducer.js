@@ -1,7 +1,8 @@
 export const wishlistReducer = (state, action) => {
+  const index = state.findIndex((el) => el._id === action.payload._id);
   switch (action.type) {
     case "TOGGLE_WISHLIST":
-      if (state.includes(action.payload)) return state.filter((it) => it.id !== action.payload.id);
+      if (index !== -1) return state.filter((it) => it._id !== action.payload._id);
       else return [...state, action.payload];
     default:
       return state;

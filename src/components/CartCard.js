@@ -4,7 +4,7 @@ export const CartCard = ({ product }) => {
   const { wishlist, dispatchWishlist } = useWishlist();
   const { dispatchCart } = useCart();
   const { title, image, count, price } = product;
-  const wishlistIndex = wishlist.findIndex((el) => el.id === product.id);
+  const wishlistIndex = wishlist.findIndex((el) => el._id === product._id);
   return (
     <>
       <div className="card hz-card cart-card left-text row-flex text-wrap w-80p h-20rm m-v-2">

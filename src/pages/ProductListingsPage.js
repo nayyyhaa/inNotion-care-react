@@ -32,7 +32,7 @@ export const ProductListingsPage = () => {
           <div className="line-decoration"></div>
           <section className="products-section container card-grid grid-resp-col">
             {finalData?.map((product) => {
-              return <Card key={product.id} product={product} />;
+              return <Card key={product._id} product={product} />;
             })}
           </section>
         </main>

@@ -16,7 +16,6 @@ export const FeatureCategories = () => {
             <Link
               to={link}
               key={_id}
-              href="pages/products.html"
               className="product-item cursor left-text m-v-2 m-h-3"
               onClick={() =>
                 dispatchFilter({
@@ -33,7 +32,9 @@ export const FeatureCategories = () => {
               </div>
               <div className="product-action">
                 {categoryName.split(" ").map((el) => (
-                  <h3 className="title products-title left-text h1">{el}</h3>
+                  <h3 key={el} className="title products-title left-text h1">
+                    {el}
+                  </h3>
                 ))}
                 <p className={`cursor product-btn ${contentColor}-content w-80p h3 p-05`}>
                   {description}

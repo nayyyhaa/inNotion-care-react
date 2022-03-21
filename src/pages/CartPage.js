@@ -15,7 +15,7 @@ export const CartPage = () => {
           <div className="line-decoration"></div>
           <section className="col-flex">
             {cart?.map((product) => {
-              return <CartCard key={product.id} product={product} />;
+              return <CartCard key={product._id} product={product} />;
             })}
           </section>
         </main>
