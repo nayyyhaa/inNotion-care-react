@@ -1,5 +1,5 @@
-import { CartCard, CartSidebar } from "../components";
-import { useCart } from "../contexts/CartContext";
+import { CartCard, CartSidebar } from "components";
+import { useCart } from "contexts/CartContext";
 
 export const CartPage = () => {
   const { cart } = useCart();

@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 import { useReducer } from "react";
-import { categoriesReducer } from "../reducers/categoriesReducer";
+import { categoriesReducer } from "reducers/categoriesReducer";
 
 const CategoriesContext = createContext();
 

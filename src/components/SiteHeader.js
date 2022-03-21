@@ -1,4 +1,4 @@
-import headerImg from "../assets/highlighter.jpg";
+import headerImg from "assets/highlighter.jpg";
 import { Link } from "react-router-dom";
 
 export const SiteHeader = () => {
@@ -10,8 +10,7 @@ export const SiteHeader = () => {
           GET <span className="colored-text lg-text bg">50% OFF</span>
         </h2>
         <h2 className="title lg-text m-v-1">
-          USE CODE:{" "}
-          <span className="colored-text text-stroke m-v-1">CARE50</span>
+          USE CODE: <span className="colored-text text-stroke m-v-1">CARE50</span>
         </h2>
         <Link to="/products">
           <button className="btn primary-btn m-v-2 p-2">SHOP NOW</button>

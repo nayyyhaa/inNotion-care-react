@@ -1,5 +1,5 @@
-import { useCategories } from "../contexts/CategoriesContext";
-import { useFilter } from "../contexts/FilterContext";
+import { useCategories } from "contexts/CategoriesContext";
+import { useFilter } from "contexts/FilterContext";
 
 export const ProductFilterSidebar = ({ showFilterBar }) => {
   const { filter, dispatchFilter } = useFilter();

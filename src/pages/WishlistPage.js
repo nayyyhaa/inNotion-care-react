@@ -1,6 +1,6 @@
-import { Card } from "../components";
-import bathbomb from "../assets/bath-bomb.jpg";
-import { useWishlist } from "../contexts/WishlistContext";
+import { Card } from "components";
+import bathbomb from "assets/bath-bomb.jpg";
+import { useWishlist } from "contexts/WishlistContext";
 
 export const WishlistPage = () => {
   const { wishlist } = useWishlist();

@@ -1,9 +1,9 @@
 import { useState } from "react";
-import bathbomb from "../assets/bath-bomb.jpg";
-import { Card, ProductFilterSidebar } from "../components";
-import { useFilter } from "../contexts/FilterContext";
-import { sort, filterBy, filterCategories, priceRange, setRating } from "../utils";
-import { useProducts } from "../contexts/ProductsContext";
+import bathbomb from "assets/bath-bomb.jpg";
+import { Card, ProductFilterSidebar } from "components";
+import { useFilter } from "contexts/FilterContext";
+import { sort, filterBy, filterCategories, priceRange, setRating } from "utils";
+import { useProducts } from "contexts/ProductsContext";
 
 export const ProductListingsPage = () => {
   const { products } = useProducts();

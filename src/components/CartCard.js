@@ -1,5 +1,5 @@
-import { useCart } from "../contexts/CartContext";
-import { useWishlist } from "../contexts/WishlistContext";
+import { useCart } from "contexts/CartContext";
+import { useWishlist } from "contexts/WishlistContext";
 export const CartCard = ({ product }) => {
   const { wishlist, dispatchWishlist } = useWishlist();
   const { dispatchCart } = useCart();

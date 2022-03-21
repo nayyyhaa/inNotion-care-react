@@ -1,4 +1,4 @@
-import { FooterData } from "../data";
+import { FooterData } from "data";
 
 export const Footer = () => {
   const { shop, information, socials } = FooterData;

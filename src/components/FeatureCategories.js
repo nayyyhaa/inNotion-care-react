@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useFilter } from "../contexts/FilterContext";
-import { useCategories } from "../contexts/CategoriesContext";
+import { useFilter } from "contexts/FilterContext";
+import { useCategories } from "contexts/CategoriesContext";
 
 export const FeatureCategories = () => {
   const { dispatchFilter } = useFilter();
