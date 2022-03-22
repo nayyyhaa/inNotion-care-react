@@ -1,6 +1,6 @@
-import { Card } from "../components";
-import bathbomb from "../assets/bath-bomb.jpg";
-import { useWishlist } from "../contexts/WishlistContext";
+import { Card } from "components";
+import bathbomb from "assets/bath-bomb.jpg";
+import { useWishlist } from "contexts/WishlistContext";
 
 export const WishlistPage = () => {
   const { wishlist } = useWishlist();
@@ -18,7 +18,7 @@ export const WishlistPage = () => {
         <div className="line-decoration"></div>
         <section className="products-section container card-grid grid-resp-col w-95p">
           {wishlist?.map((el) => {
-            return <Card product={el} />;
+            return <Card key={el._id} product={el} />;
           })}
         </section>
       </main>

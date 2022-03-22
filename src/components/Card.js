@@ -1,14 +1,14 @@
-import { useCart } from "../contexts/CartContext";
-import { useWishlist } from "../contexts/WishlistContext";
+import { useCart } from "contexts/CartContext";
+import { useWishlist } from "contexts/WishlistContext";
 
 export const Card = ({ product }) => {
   const { wishlist, dispatchWishlist } = useWishlist();
   const { cart, dispatchCart } = useCart();
-  const cartItem = cart.filter((el) => el.id === product.id)[0];
-  const { name, description, image, rating, price, inStock } = product;
+  const cartItem = cart.filter((el) => el._id === product._id)[0];
+  const { title, description, image, rating, ratingNo, price, inStock } = product;
   return (
     <div className={`card vd-card left-text col-flex flex-start w-30rm m-2 ${!inStock ? "disabled" : ""}`}>
-      <img className="card-img full-wd" src={image} alt={name} />
+      <img className="card-img full-wd" src={image} alt={title} />
       <button className="card-icon-btn icon-btn rd-bdr heart-btn">
         <i
           className={`fa fa-heart${!wishlist.includes(product) ? "-o" : ""}`}
@@ -17,14 +17,14 @@ export const Card = ({ product }) => {
         ></i>
       </button>
       <div className="card-header-text col-flex flex-start text-wrap p-2">
-        <h2 className="card-title h3">{name}</h2>
+        <h2 className="card-title h3">{title}</h2>
         <div className="rating-badge card-rating-overlay">
           <span className="rating-number">{rating}</span>
           <label>
             <i className="fa fa-star rating-icon" aria-hidden="true"></i>
           </label>
           <span>|</span>
-          <span className="rating-number">99</span>
+          <span className="rating-number">{ratingNo}</span>
         </div>
         <p className="sub-heading m-b-1">{description}</p>
         <p className="h3 colored-text">{price} ₹</p>

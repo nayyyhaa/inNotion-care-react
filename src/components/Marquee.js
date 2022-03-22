@@ -1,4 +1,4 @@
-import { MarqueeData } from "../data";
+import { MarqueeData } from "data";
 
 export const Marquee = () => {
   return (

@@ -1,2 +1,4 @@
-export const filterCategories = (data, categories) =>
-  categories.length ? data.filter((it) => it.category.filter((cat) => categories.includes(cat)).length) : data;
+export const filterCategories = (data, categoriesSelected) =>
+  categoriesSelected.length
+    ? data.filter((it) => it.categoryName.filter((cat) => categoriesSelected.includes(cat)).length)
+    : data;

@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useFilter } from "../contexts/FilterContext";
+import { useFilter } from "contexts/FilterContext";
 
 export const usePageViewTracker = () => {
   const location = useLocation();

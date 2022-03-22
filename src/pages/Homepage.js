@@ -1,4 +1,5 @@
-import { SiteHeader, Marquee, ProductsListing, FeatureCategories } from "../components";
+import { SiteHeader, Marquee, ProductsListing, FeatureCategories } from "components";
+
 export const Homepage = () => {
   return (
     <>

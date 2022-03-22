@@ -11,16 +11,16 @@ export const filterReducer = (state, action) => {
     case "SET_CATEGORIES":
       return {
         ...state,
-        categories: action.payload.isChecked
-          ? [...state.categories, action.payload.type]
-          : state.categories.filter((cat) => cat !== action.payload.type),
+        categoriesSelected: action.payload.isChecked
+          ? [...state.categoriesSelected, action.payload.type]
+          : state.categoriesSelected.filter((cat) => cat !== action.payload.type),
       };
     case "CLEAR_ALL":
       return {
         sortBy: null,
         includeOutOfStock: true,
         maxPriceRange: 1000,
-        categories: [],
+        categoriesSelected: [],
         ratingRange: null,
       };
     default:

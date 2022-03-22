@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "../contexts/CartContext";
-import { useWishlist } from "../contexts/WishlistContext";
-import { NavbarData } from "../data";
+import { useCart } from "contexts/CartContext";
+import { useWishlist } from "contexts/WishlistContext";
+import { NavbarData } from "data";
 
 export const Navbar = () => {
   const { categories, navbarActions } = NavbarData;
