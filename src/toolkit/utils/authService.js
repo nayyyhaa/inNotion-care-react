@@ -7,7 +7,6 @@ export const loginService = async (url, email, password) => {
   });
   try {
     if (res.status === 200 || res.status === 201) {
-      console.log(res, [res.data.encodedToken, res.data.foundUser],"res");
       return [res.data.encodedToken, res.data.foundUser];
     } else {
       throw new Error(res);
@@ -26,7 +25,6 @@ export const signupService = async (url, email, password, firstName, lastName) =
   });
   try {
     if (res.status === 200 || res.status === 201) {
-      console.log(res, "res");
       return [res.data.encodedToken, res.data.createdUser];
     } else {
       throw new Error(res);
