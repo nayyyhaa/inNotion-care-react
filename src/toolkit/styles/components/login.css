@@ -14,6 +14,10 @@
   transform: translate(0, 10px);
 }
 
+.form-validated .eye-icon {
+  top: 38%;
+}
+
 @media screen and (max-width: 500px) {
   .login-card {
     width: 100%;
