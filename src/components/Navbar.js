@@ -2,13 +2,15 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "contexts/CartContext";
 import { useWishlist } from "contexts/WishlistContext";
-import { NavbarData } from "data";
+import { NavbarData } from "toolkit/data";
+import { useAuth } from "contexts/AuthContext";
 
 export const Navbar = () => {
   const { categories, navbarActions } = NavbarData;
   const [isNavVisible, setNavVisible] = useState(false);
   const { wishlist } = useWishlist();
   const { cart } = useCart();
+  const { auth } = useAuth();
 
   return (
     <header className="header fixed-header">
@@ -33,19 +35,23 @@ export const Navbar = () => {
         </label>
         <div className="nav-icon-btns row-flex no-wrap">
           <ul className="row-flex no-bullet">
-            {navbarActions?.map(({ id, title, icon, link, hasIconBadge }) => (
+            {navbarActions?.map(({ id, title, icon, link }) => (
               <li key={id} className="nav-icon-btn icon-btn rd-bdr grid-ctr wt-text m-r-3">
                 <Link to={link} className="badge-wrapper grid-ctr">
                   <i className={icon} aria-hidden="true"></i>
-                  {hasIconBadge && (
-                    <span className="badge wt-text grid-ctr red-content">
-                      {title === "Wishlist" ? wishlist.length : cart.length}
-                    </span>
-                  )}
+                  <span className="badge wt-text grid-ctr red-content">
+                    {title === "Wishlist" ? wishlist.length : cart.length}
+                  </span>
                   <span className="nav-icon-text h6 cursor wt-text">{title}</span>
                 </Link>
               </li>
             ))}
+            <li className="nav-icon-btn icon-btn rd-bdr grid-ctr wt-text m-r-3">
+              <Link to={auth.isAuth ? `/profile` : `/login`} className="badge-wrapper grid-ctr">
+                <i className="fa fa-user" aria-hidden="true"></i>
+                <span className="nav-icon-text h6 cursor wt-text">Profile</span>
+              </Link>
+            </li>
           </ul>
           <div
             className="hamburger icon-toggle icon-btn rd-bdr grid-ctr wt-text m-r-1"

@@ -1,8 +1,8 @@
 import { v4 as uuid } from "uuid";
-import bathbomb from "../../assets/bath-bomb.jpg";
-import insense from "../../assets/inscence.jpg";
-import facemask from "../../assets/facemask.jpg";
-import highlighter from "../../assets/highlighter.jpg";
+import bathbomb from "../../toolkit/assets/bath-bomb.jpg";
+import insense from "../../toolkit/assets/inscence.jpg";
+import facemask from "../../toolkit/assets/facemask.jpg";
+import highlighter from "../../toolkit/assets/highlighter.jpg";
 /**
  * Product Database can be added here.
  * You can add products of your wish with different attributes

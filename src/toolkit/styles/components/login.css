@@ -1,9 +1,17 @@
-.login-content {
+.login-content,
+.profile-content {
   background: linear-gradient(to bottom, var(--COLOR-PRIMARY-XXLIGHT), var(--COLOR-PRIMARY-LIGHT));
 }
 
 .login-actions {
   justify-content: space-between;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  transform: translate(0, 10px);
 }
 
 @media screen and (max-width: 500px) {
