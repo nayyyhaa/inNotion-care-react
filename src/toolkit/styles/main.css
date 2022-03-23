@@ -17,3 +17,9 @@ datalist {
 datalist > option {
   width: auto;
 }
+
+/* override mockman styles */
+.title {
+  border-bottom: none;
+  padding-block: initial;
+}

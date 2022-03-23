@@ -1,8 +1,8 @@
 import { v4 as uuid } from "uuid";
 
-import nature from "../../assets/nature-product.jpg";
-import body from "../../assets/body-product.jpg";
-import soul from "../../assets/soul-product.jpg";
+import nature from "../../toolkit/assets/nature-product.jpg";
+import body from "../../toolkit/assets/body-product.jpg";
+import soul from "../../toolkit/assets/soul-product.jpg";
 
 /**
  * Category Database can be added here.

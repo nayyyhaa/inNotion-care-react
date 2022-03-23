@@ -1,8 +1,8 @@
-// import diamond from "assets/diamond.png";
-import heart from "assets/heart.png";
-import leaf from "assets/leaf.png";
-import star from "assets/star.png";
-import paw from "assets/paw.png";
+import diamond from "toolkit/assets/diamond.png";
+import heart from "toolkit/assets/heart.png";
+import leaf from "toolkit/assets/leaf.png";
+import star from "toolkit/assets/star.png";
+import paw from "toolkit/assets/paw.png";
 
 export const MarqueeData = [
   {
@@ -23,8 +23,7 @@ export const MarqueeData = [
   {
     id: 4,
     title: "Long lasting",
-    // image: diamond
-    image: paw,
+    image: diamond,
   },
   {
     id: 5,

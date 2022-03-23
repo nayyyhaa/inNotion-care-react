@@ -9,23 +9,26 @@ import { WishlistProvider } from "./contexts/WishlistContext";
 import { CartProvider } from "./contexts/CartContext";
 import { ProductsProvider } from "./contexts/ProductsContext";
 import { CategoriesProvider } from "./contexts/CategoriesContext";
+import { AuthProvider } from "contexts/AuthContext";
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <ProductsProvider>
-        <CategoriesProvider>
-          <FilterProvider>
-            <WishlistProvider>
-              <CartProvider>
-                <App />
-              </CartProvider>
-            </WishlistProvider>
-          </FilterProvider>
-        </CategoriesProvider>
-      </ProductsProvider>
+      <AuthProvider>
+        <ProductsProvider>
+          <CategoriesProvider>
+            <FilterProvider>
+              <WishlistProvider>
+                <CartProvider>
+                  <App />
+                </CartProvider>
+              </WishlistProvider>
+            </FilterProvider>
+          </CategoriesProvider>
+        </ProductsProvider>
+      </AuthProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

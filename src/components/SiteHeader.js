@@ -1,4 +1,4 @@
-import headerImg from "assets/highlighter.jpg";
+import headerImg from "toolkit/assets/highlighter.jpg";
 import { Link } from "react-router-dom";
 
 export const SiteHeader = () => {
