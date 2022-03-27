@@ -1,18 +1,22 @@
 import { useCart } from "contexts/CartContext";
 import { useWishlist } from "contexts/WishlistContext";
+import { Link } from "react-router-dom";
 
 export const Card = ({ product }) => {
-  const { wishlist, dispatchWishlist } = useWishlist();
-  const { cart, dispatchCart } = useCart();
+  const { wishlist, addToWishlist, removeFromWishlist } = useWishlist();
+  const { cart, addToCart } = useCart();
   const cartItem = cart.filter((el) => el._id === product._id)[0];
-  const { title, description, image, rating, ratingNo, price, inStock } = product;
+  const { _id, title, description, image, rating, ratingNo, price, inStock } = product;
+  const wishlistIndex = wishlist.findIndex((el) => el._id === product._id);
   return (
     <div className={`card vd-card left-text col-flex flex-start w-30rm m-2 ${!inStock ? "disabled" : ""}`}>
       <img className="card-img full-wd" src={image} alt={title} />
       <button className="card-icon-btn icon-btn rd-bdr heart-btn">
         <i
-          className={`fa fa-heart${!wishlist.includes(product) ? "-o" : ""}`}
-          onClick={() => dispatchWishlist({ type: "TOGGLE_WISHLIST", payload: product })}
+          className={`fa fa-heart${wishlistIndex < 0 ? "-o" : ""}`}
+          onClick={() => {
+            wishlistIndex < 0 ? addToWishlist(product) : removeFromWishlist(_id);
+          }}
           aria-hidden="true"
         ></i>
       </button>
@@ -30,34 +34,21 @@ export const Card = ({ product }) => {
         <p className="h3 colored-text">{price} ₹</p>
       </div>
       <div className="card-actions p-2 row-flex full-wd">
-        {!cartItem ? (
-          <div className="card-btns">
-            <button
-              className="btn primary-btn m-r-1"
-              onClick={() => dispatchCart({ type: "ADD_TO_CART", payload: product })}
-            >
+        <div className="card-btns">
+          {!cartItem ? (
+            <button className="btn primary-btn m-r-1" onClick={() => addToCart(product)}>
               <i className="fa fa-shopping-cart" aria-hidden="true"></i>
               <span className="p-l-1">Add to cart</span>
             </button>
-          </div>
-        ) : (
-          <div className="quantity-selector row-flex no-wrap full-height">
-            <button className="icon-btn" onClick={() => dispatchCart({ type: "DELETE_FROM_CART", payload: product })}>
-              <i className="fa fa-trash-o light-font m-r-2 red-text" aria-hidden="true"></i>
-            </button>
-            <button
-              className="icon-btn"
-              onClick={() => dispatchCart({ type: "DECREMENT_FROM_CART", payload: product })}
-            >
-              <i className="fa fa-minus light-font m-r-2" aria-hidden="true"></i>
-            </button>
-            <p className="quantity m-r-2 h3">{cartItem?.count}</p>
-
-            <button className="icon-btn" onClick={() => dispatchCart({ type: "ADD_TO_CART", payload: product })}>
-              <i className="fa fa-plus light-font" aria-hidden="true"></i>
-            </button>
-          </div>
-        )}
+          ) : (
+            <Link to="/cart">
+              <button className="btn primary-btn m-r-1">
+                <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+                <span className="p-l-1">Go to cart</span>
+              </button>
+            </Link>
+          )}
+        </div>
         <div className="card-icons">
           <button className="card-icon-btn icon-btn rd-bdr">
             <i className="fa fa-share-alt" aria-hidden="true"></i>

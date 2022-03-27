@@ -9,7 +9,7 @@ export const ProductsListing = () => {
         <span className="circle"></span>inNotion Classics
       </h2>
       <div className="container product-content grid-4-col card-grid p-v-2">
-        {products?.map((product) => {
+        {products?.slice(0, 4).map((product) => {
           return <Card key={product._id} product={product} />;
         })}
       </div>

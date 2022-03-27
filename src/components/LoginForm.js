@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import { useState, useRef } from "react";
 import { useAuth } from "contexts/AuthContext";
+import { useWishlist } from "contexts/WishlistContext";
+import { useCart } from "contexts/CartContext";
+import { useLogin } from "toolkit/custom-hooks";
 export const LoginForm = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [checkFormValidity, setFormValid] = useState(false);
   const [isPasswordVisible, setPasswordVisible] = useState(false);
-  const { loginHandler } = useAuth();
+  const { loginHandler } = useLogin();
   const formRef = useRef();
 
   const validateForm = (e) => {
@@ -85,7 +88,9 @@ export const LoginForm = () => {
           <button
             type="submit"
             className="btn primary-outline-btn w-95p m-1"
-            onClick={(e) => loginHandler(e, "neha@gmail.com", "test")}
+            onClick={(e) => {
+              loginHandler(e, "neha@gmail.com", "test");
+            }}
           >
             <span>LOGIN (with Guest Credentials)</span>
           </button>

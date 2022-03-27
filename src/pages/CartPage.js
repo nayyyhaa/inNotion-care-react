@@ -1,9 +1,15 @@
 import { CartCard, CartSidebar } from "components";
 import { useCart } from "contexts/CartContext";
+import { useState, useEffect } from "react";
 
 export const CartPage = () => {
   const { cart } = useCart();
+  const [isShippingFree, setIsShippingFree] = useState(false);
   let totalPrice = cart.length > 0 ? cart.reduce((acc, curr) => acc + curr.price * curr.count, 0) : 0;
+
+  useEffect(() => {
+    totalPrice > 1999 ? setIsShippingFree(true) : setIsShippingFree(false);
+  }, [cart]);
 
   return (
     <>
@@ -19,7 +25,7 @@ export const CartPage = () => {
             })}
           </section>
         </main>
-        {cart.length > 0 && <CartSidebar totalPrice={totalPrice} />}
+        {cart.length > 0 && <CartSidebar totalPrice={totalPrice} isShippingFree={isShippingFree} />}
       </div>
     </>
   );

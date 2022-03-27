@@ -9,5 +9,6 @@ export { Marquee } from "./Marquee";
 export { Navbar } from "./Navbar";
 export { SignupForm } from "./SignupForm";
 export { SiteHeader } from "./SiteHeader";
+export { Toast } from "./Toast";
 export { ProductsListing } from "./ProductsListing";
 export { ProductFilterSidebar } from "./ProductFilterSidebar";

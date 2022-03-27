@@ -17,6 +17,9 @@
   bottom: 20rem;
 }
 
+.show-toast {
+  z-index: 15;
+}
 
 .heart-btn {
   position: absolute;
