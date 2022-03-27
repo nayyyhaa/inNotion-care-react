@@ -1,9 +1,9 @@
 import { useCart } from "contexts/CartContext";
 import { useWishlist } from "contexts/WishlistContext";
 export const CartCard = ({ product }) => {
-  const { wishlist, dispatchWishlist } = useWishlist();
-  const { dispatchCart } = useCart();
-  const { title, image, count, price } = product;
+  const { wishlist, addToWishlist, removeFromWishlist } = useWishlist();
+  const { updateQuantityInCart, removeFromCart } = useCart();
+  const { _id, title, image, qty, price } = product;
   const wishlistIndex = wishlist.findIndex((el) => el._id === product._id);
   return (
     <>
@@ -12,7 +12,9 @@ export const CartCard = ({ product }) => {
         <button className="card-icon-btn cart-wishlist icon-btn rd-bdr heart-btn">
           <i
             className={`fa fa-heart${wishlistIndex < 0 ? "-o" : ""}`}
-            onClick={() => dispatchWishlist({ type: "TOGGLE_WISHLIST", payload: product })}
+            onClick={() => {
+              wishlistIndex < 0 ? addToWishlist(product) : removeFromWishlist(_id);
+            }}
             aria-hidden="true"
           ></i>
         </button>
@@ -20,18 +22,15 @@ export const CartCard = ({ product }) => {
           <h2 className="card-title h3">{title}</h2>
           <small className="card-text sub-heading-light m-b-2">Sold by: Nene Stores</small>
           <div className="quantity-selector row-flex no-wrap m-b-2">
-            <button className="icon-btn" onClick={() => dispatchCart({ type: "DELETE_FROM_CART", payload: product })}>
+            <button className="icon-btn" onClick={() => removeFromCart(_id)}>
               <i className="fa fa-trash-o light-font m-r-2 red-text" aria-hidden="true"></i>
             </button>
-            <button
-              className="icon-btn"
-              onClick={() => dispatchCart({ type: "DECREMENT_FROM_CART", payload: product })}
-            >
+            <button className="icon-btn" onClick={() => updateQuantityInCart(_id, "decrement", qty)}>
               <i className="fa fa-minus light-font m-r-2" aria-hidden="true"></i>
             </button>
-            <p className="quantity m-r-2 h3">{count}</p>
+            <p className="quantity m-r-2 h3">{qty}</p>
 
-            <button className="icon-btn" onClick={() => dispatchCart({ type: "ADD_TO_CART", payload: product })}>
+            <button className="icon-btn" onClick={() => updateQuantityInCart(_id, "increment", qty)}>
               <i className="fa fa-plus light-font" aria-hidden="true"></i>
             </button>
           </div>

@@ -1,6 +1,8 @@
 export const cartReducer = (state, action) => {
   const index = state.findIndex((el) => el._id === action.payload._id);
   switch (action.type) {
+    case "SET_ALL_CART":
+      return action.payload;
     case "ADD_TO_CART": {
       if (index !== -1)
         return [

@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { useState, useRef } from "react";
-import { useAuth } from "contexts/AuthContext";
+import { useLogin } from "toolkit/custom-hooks";
 
 export const SignupForm = () => {
   const [form, setForm] = useState({ email: "", password: "", firstName: "", lastName: "" });
   const [checkFormValidity, setFormValid] = useState(false);
   const [isPasswordVisible, setPasswordVisible] = useState(false);
-  const { signupHandler } = useAuth();
+  const { signupHandler } = useLogin();
   const formRef = useRef();
 
   const validateForm = (e) => {

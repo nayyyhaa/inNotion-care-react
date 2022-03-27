@@ -22,7 +22,7 @@ export const Navbar = () => {
         </Link>
         <ul className={`nav-items row-flex w-40p no-bullet ${isNavVisible ? "show-nav" : ""}`}>
           {categories?.map(({ id, title, link }) => (
-            <li key={id} className="btn nav-link-btn cursor h3">
+            <li key={id} className="btn nav-link-btn cursor h3" onClick={() => setNavVisible(false)}>
               <Link to={link}>{title}</Link>
             </li>
           ))}
