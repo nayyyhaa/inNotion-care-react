@@ -1,13 +1,9 @@
 import { useAuth } from "contexts/AuthContext";
-import { useCart } from "contexts/CartContext";
-import { useWishlist } from "contexts/WishlistContext";
 import { useLogin } from "toolkit/custom-hooks";
 
 export const ProfilePage = () => {
   const { user } = useAuth();
   const { logoutHandler } = useLogin();
-  const { dispatchCart } = useCart();
-  const { dispatchWishlist } = useWishlist();
   return (
     <>
       <main className="profile-content form-content full-wd grid-ctr m-auto p-v-5">
@@ -29,14 +25,7 @@ export const ProfilePage = () => {
               <strong className="m-r-1">Email:</strong>
               {user?.email}
             </li>
-            <button
-              className="btn primary-btn centered-text w-95p m-h-1"
-              onClick={() => {
-                logoutHandler();
-                dispatchCart({ type: "SET_ALL_CART", payload: [] });
-                dispatchWishlist({ type: "SET_ALL_WISHLIST", payload: [] });
-              }}
-            >
+            <button className="btn primary-btn centered-text w-95p m-h-1" onClick={() => logoutHandler()}>
               <span>Logout</span>
             </button>
           </ul>

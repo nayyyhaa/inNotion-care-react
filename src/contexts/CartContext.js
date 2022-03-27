@@ -30,7 +30,6 @@ const CartProvider = ({ children }) => {
         type: "SHOW_TOAST",
         payload: { state: "error", msg: "Error in adding product to cart" },
       });
-      console.log(err);
     }
   };
 

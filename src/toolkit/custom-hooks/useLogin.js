@@ -39,6 +39,8 @@ export const useLogin = () => {
     localStorage.removeItem("isAuth");
     localStorage.removeItem("user");
     setAuth({ token: "", isAuth: false });
+    dispatchCart({ type: "SET_ALL_CART", payload: [] });
+    dispatchWishlist({ type: "SET_ALL_WISHLIST", payload: [] });
     navigate("/login");
   };
 
