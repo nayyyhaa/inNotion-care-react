@@ -5,11 +5,11 @@ import { useState, useEffect } from "react";
 export const CartPage = () => {
   const { cart } = useCart();
   const [isShippingFree, setIsShippingFree] = useState(false);
-  let totalPrice = cart.length > 0 ? cart.reduce((acc, curr) => acc + curr.price * curr.count, 0) : 0;
+  let totalPrice = cart.length > 0 ? cart.reduce((acc, curr) => acc + curr.price * curr.qty, 0) : 0;
 
   useEffect(() => {
     totalPrice > 1999 ? setIsShippingFree(true) : setIsShippingFree(false);
-  }, [cart]);
+  }, [totalPrice]);
 
   return (
     <>
