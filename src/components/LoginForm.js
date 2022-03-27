@@ -38,6 +38,7 @@ export const LoginForm = () => {
               type="email"
               className="input p-07"
               id="email"
+              value={form.email}
               required
               onChange={(e) =>
                 setForm((prev) => ({
@@ -61,6 +62,7 @@ export const LoginForm = () => {
               type={isPasswordVisible ? `text` : `password`}
               className="input p-07"
               id="upassword"
+              value={form.password}
               required
               onChange={(e) =>
                 setForm((prev) => ({
@@ -90,6 +92,7 @@ export const LoginForm = () => {
             className="btn primary-outline-btn w-95p m-1"
             onClick={(e) => {
               loginHandler(e, "neha@gmail.com", "test");
+              setForm({ email: "neha@gmail.com", password: "test" });
             }}
           >
             <span>LOGIN (with Guest Credentials)</span>
