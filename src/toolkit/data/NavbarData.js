@@ -5,14 +5,9 @@ export const NavbarData = {
       title: "Shop",
       link: "/products",
     },
-    {
-      id: 2,
-      title: "About",
-      link: "pages/products.html",
-    },
   ],
   navbarActions: [
     { id: 1, title: "Wishlist", icon: "fa fa-heart rating-icon", link: "/wishlist" },
-    { id: 2, title: "Cart", icon: "fa fa-shopping-cart", link: "/cart"},
+    { id: 2, title: "Cart", icon: "fa fa-shopping-cart", link: "/cart" },
   ],
 };
