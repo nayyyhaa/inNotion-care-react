@@ -7,6 +7,7 @@
 @import url("./components/marquee.css");
 @import url("./components/product.css");
 @import url("./components/site-header.css");
+@import url("./components/single-product.css");
 
 datalist {
   display: flex;

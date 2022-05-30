@@ -14,7 +14,8 @@ const WishlistProvider = ({ children }) => {
   const { dispatchToast } = useToast();
   const navigate = useNavigate();
 
-  const addToWishlist = async (product) => {
+  const addToWishlist = async (product, e) => {
+    e.preventDefault();
     try {
       if (auth.isAuth) {
         const res = await addToWishlistService(auth.token, product);
@@ -44,7 +45,8 @@ const WishlistProvider = ({ children }) => {
     }
   };
 
-  const removeFromWishlist = async (id) => {
+  const removeFromWishlist = async (id, e) => {
+    e.preventDefault();
     try {
       if (auth.isAuth) {
         const res = await removeFromWishlistService(auth.token, id);

@@ -1,8 +1,5 @@
 import { Link } from "react-router-dom";
 import { useState, useRef } from "react";
-import { useAuth } from "contexts/AuthContext";
-import { useWishlist } from "contexts/WishlistContext";
-import { useCart } from "contexts/CartContext";
 import { useLogin } from "toolkit/custom-hooks";
 export const LoginForm = () => {
   const [form, setForm] = useState({ email: "", password: "" });

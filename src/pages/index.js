@@ -5,3 +5,4 @@ export { ProductListingsPage } from "./ProductListingsPage";
 export { ProfilePage } from "./ProfilePage";
 export { PageNotFound } from "./PageNotFound";
 export { WishlistPage } from "./WishlistPage";
+export { SingleProductPage } from "./SingleProductPage";

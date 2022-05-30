@@ -9,13 +9,16 @@ export const Card = ({ product }) => {
   const { _id, title, description, image, rating, ratingNo, price, inStock } = product;
   const wishlistIndex = wishlist.findIndex((el) => el._id === product._id);
   return (
-    <div className={`card vd-card left-text col-flex flex-start w-30rm m-2 ${!inStock ? "disabled" : ""}`}>
+    <Link
+      to={`/product/${_id}`}
+      className={`card vd-card left-text col-flex flex-start w-30rm m-2 ${!inStock ? "disabled" : ""}`}
+    >
       <img className="card-img full-wd" src={image} alt={title} />
       <button className="card-icon-btn icon-btn rd-bdr heart-btn">
         <i
           className={`fa fa-heart${wishlistIndex < 0 ? "-o" : ""}`}
-          onClick={() => {
-            wishlistIndex < 0 ? addToWishlist(product) : removeFromWishlist(_id);
+          onClick={(e) => {
+            wishlistIndex < 0 ? addToWishlist(product, e) : removeFromWishlist(_id, e);
           }}
           aria-hidden="true"
         ></i>
@@ -36,7 +39,7 @@ export const Card = ({ product }) => {
       <div className="card-actions p-2 row-flex full-wd">
         <div className="card-btns">
           {!cartItem ? (
-            <button className="btn primary-btn m-r-1" onClick={() => addToCart(product)}>
+            <button className="btn primary-btn m-r-1" onClick={(e) => addToCart(product, e)}>
               <i className="fa fa-shopping-cart" aria-hidden="true"></i>
               <span className="p-l-1">Add to cart</span>
             </button>
@@ -56,6 +59,6 @@ export const Card = ({ product }) => {
         </div>
       </div>
       {!inStock && <div className="h3 card-overlay grid-ctr">Sold out!</div>}
-    </div>
+    </Link>
   );
 };

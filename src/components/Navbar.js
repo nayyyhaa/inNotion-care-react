@@ -24,7 +24,14 @@ export const Navbar = () => {
         </Link>
         <ul className={`nav-items row-flex w-20p no-bullet ${isNavVisible ? "show-nav" : ""}`}>
           {categories?.map(({ id, title, link }) => (
-            <li key={id} className="btn nav-link-btn cursor h3" onClick={() => setNavVisible(false)}>
+            <li
+              key={id}
+              className="btn nav-link-btn cursor h3"
+              onClick={() => {
+                setNavVisible(false);
+                setSearchIp("");
+              }}
+            >
               <Link to={link}>{title}</Link>
             </li>
           ))}

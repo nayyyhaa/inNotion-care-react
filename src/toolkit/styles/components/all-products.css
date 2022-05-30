@@ -66,6 +66,15 @@
   color: var(--COLOR-PRIMARY-DARK);
 }
 
+.card-title,
+.quantity {
+  color: var(--COLOR-GREY-DARK);
+}
+
+.quantity {
+  align-self: center;
+}
+
 /*media queries*/
 
 @media screen and (max-width: 1150px) {
@@ -172,7 +181,7 @@
   .products-banner-text {
     font-size: 3rem;
   }
-  
+
   .card-rating-overlay {
     bottom: 22rem;
   }
