@@ -1,0 +1,29 @@
+.single-product-container {
+  min-height: 80vh;
+  max-width: 90rem;
+  margin: 4rem auto 2rem;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.single-product-container img {
+  height: 70vh;
+  width: 50%;
+}
+
+@media screen and (max-width: 500px) {
+  .single-product-container img,
+  .single-product-description {
+    width: 90%;
+    margin: 2rem auto;
+  }
+
+  .single-product-description {
+    padding: 1rem;
+  }
+
+  .single-product-container img {
+    height: 40vh;
+  }
+}

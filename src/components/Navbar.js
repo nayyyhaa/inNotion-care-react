@@ -4,10 +4,12 @@ import { useCart } from "contexts/CartContext";
 import { useWishlist } from "contexts/WishlistContext";
 import { NavbarData } from "toolkit/data";
 import { useAuth } from "contexts/AuthContext";
+import { useFilter } from "contexts/FilterContext";
 
 export const Navbar = () => {
   const { categories, navbarActions } = NavbarData;
   const [isNavVisible, setNavVisible] = useState(false);
+  const { searchIp, setSearchIp } = useFilter();
   const { wishlist } = useWishlist();
   const { cart } = useCart();
   const { auth } = useAuth();
@@ -20,18 +22,35 @@ export const Navbar = () => {
             in.notion <span className="text-shd">Care</span>
           </h3>
         </Link>
-        <ul className={`nav-items row-flex w-40p no-bullet ${isNavVisible ? "show-nav" : ""}`}>
+        <ul className={`nav-items row-flex w-20p no-bullet ${isNavVisible ? "show-nav" : ""}`}>
           {categories?.map(({ id, title, link }) => (
-            <li key={id} className="btn nav-link-btn cursor h3" onClick={() => setNavVisible(false)}>
+            <li
+              key={id}
+              className="btn nav-link-btn cursor h3"
+              onClick={() => {
+                setNavVisible(false);
+                setSearchIp("");
+              }}
+            >
               <Link to={link}>{title}</Link>
             </li>
           ))}
         </ul>
-        <label className="field searchfield w-20p" htmlFor="search-text">
+        <label className="field searchfield w-30p" htmlFor="search-text">
           <span className="search-icon cursor p-h-1">
             <i className="fa fa-search" aria-hidden="true"></i>
           </span>
-          <input type="search" className="input search-nav reset-ip p-05" placeholder="Search here" id="search-text" />
+          <input
+            type="search"
+            className="input search-nav reset-ip p-05"
+            placeholder="Search here"
+            id="search-text"
+            value={searchIp}
+            onChange={(e) => setSearchIp(e.target.value)}
+          />
+          <Link to="/products">
+            <button className="btn secondary-outline-btn m-l-1">Search</button>
+          </Link>
         </label>
         <div className="nav-icon-btns row-flex no-wrap">
           <ul className="row-flex no-bullet">

@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 import { filterReducer } from "reducers/filterReducer";
 
 const FilterContext = createContext();
@@ -11,7 +11,12 @@ const FilterProvider = ({ children }) => {
     categoriesSelected: [],
     rating: null,
   });
-  return <FilterContext.Provider value={{ filter, dispatchFilter }}>{children}</FilterContext.Provider>;
+  const [searchIp, setSearchIp] = useState("");
+  return (
+    <FilterContext.Provider value={{ filter, dispatchFilter, searchIp, setSearchIp }}>
+      {children}
+    </FilterContext.Provider>
+  );
 };
 
 const useFilter = () => useContext(FilterContext);

@@ -1,6 +1,4 @@
-import axios from "axios";
 import { createContext, useContext, useReducer } from "react";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { cartReducer } from "reducers/cartReducer";
 import { addToCartService, getCartService, updateQuantityInCartService, removeFromCartService } from "toolkit/utils";
@@ -15,7 +13,8 @@ const CartProvider = ({ children }) => {
   const { dispatchToast } = useToast();
   const navigate = useNavigate();
 
-  const addToCart = async (product) => {
+  const addToCart = async (product, e) => {
+    e.preventDefault();
     try {
       if (auth.isAuth) {
         const res = await addToCartService(auth.token, product);
@@ -44,7 +43,8 @@ const CartProvider = ({ children }) => {
     }
   };
 
-  const updateQuantityInCart = async (id, type, qty) => {
+  const updateQuantityInCart = async (id, type, qty, e) => {
+    e.preventDefault();
     let res;
     try {
       if (auth.isAuth) {
@@ -60,7 +60,8 @@ const CartProvider = ({ children }) => {
     }
   };
 
-  const removeFromCart = async (id) => {
+  const removeFromCart = async (id,e) => {
+    e.preventDefault();
     try {
       if (auth.isAuth) {
         const res = await removeFromCartService(auth.token, id);

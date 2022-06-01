@@ -4,13 +4,15 @@ import { Card, ProductFilterSidebar } from "components";
 import { useFilter } from "contexts/FilterContext";
 import { sort, filterBy, filterCategories, priceRange, setRating } from "toolkit/utils";
 import { useProducts } from "contexts/ProductsContext";
+import { filterSearch } from "toolkit/utils/filterCategories";
 
 export const ProductListingsPage = () => {
   const { products } = useProducts();
   const [showFilterBar, setShowFilterBar] = useState(false);
-  const { filter, dispatchFilter } = useFilter();
+  const { filter, searchIp, dispatchFilter } = useFilter();
   const { sortBy, maxPriceRange, ratingRange, categoriesSelected } = filter;
-  const sortedData = sort(products, sortBy);
+  const searchedData = filterSearch(products, searchIp);
+  const sortedData = sort(searchedData, sortBy);
   const priceRangeData = priceRange(sortedData, maxPriceRange);
   const ratingData = setRating(priceRangeData, ratingRange);
   const catogorisedData = filterCategories(ratingData, categoriesSelected);
@@ -30,6 +32,11 @@ export const ProductListingsPage = () => {
             </h2>
           </div>
           <div className="line-decoration"></div>
+          {searchIp && (
+            <p className="centered-text m-t-3">
+              Searched product: "<span className="colored-text">{searchIp}</span>"
+            </p>
+          )}
           <section className="products-section container card-grid grid-resp-col">
             {finalData?.map((product) => {
               return <Card key={product._id} product={product} />;

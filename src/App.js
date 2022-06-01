@@ -6,6 +6,7 @@ import {
   ProfilePage,
   ProductListingsPage,
   CartPage,
+  SingleProductPage,
   PageNotFound,
 } from "./pages";
 import { HeaderAnnouncement, Footer, Navbar, Toast } from "./components";
@@ -15,7 +16,6 @@ import { useCategories } from "./contexts/CategoriesContext";
 import Mockman from "mockman-js";
 import { PrivateRoute } from "routes/PrivateRoute";
 import { useToast } from "./contexts/ToastContext";
-import { useCart } from "contexts/CartContext";
 
 function App() {
   const { toast } = useToast();
@@ -50,6 +50,7 @@ function App() {
         <Route path="/products" element={<ProductListingsPage />} />
         <Route path="/login" element={<Authorisation />} />
         <Route path="/signup" element={<Authorisation />} />
+        <Route path="/product/:id" element={<SingleProductPage />} />
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/wishlist" element={<WishlistPage />} />
           <Route path="/cart" element={<CartPage />} />

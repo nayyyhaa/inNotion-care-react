@@ -5,10 +5,13 @@ import { useFilter } from "contexts/FilterContext";
 export const usePageViewTracker = () => {
   const location = useLocation();
   const [lastLocation, setLastLocation] = useState("");
-  const { dispatchFilter } = useFilter();
+  const { setSearchIp, dispatchFilter } = useFilter();
 
   useEffect(() => {
-    if (lastLocation.pathname === "/products") dispatchFilter({ type: "CLEAR_ALL" });
+    if (lastLocation.pathname === "/products") {
+      dispatchFilter({ type: "CLEAR_ALL" });
+      setSearchIp("");
+    }
     setLastLocation(location);
   }, [location]);
 
