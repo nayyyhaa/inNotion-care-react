@@ -37,6 +37,13 @@
   left: unset;
 }
 
+.discount-box {
+  border: 1px solid black;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  width: 30rem;
+}
+
 /*media queries*/
 
 @media screen and (max-width: 1150px) {

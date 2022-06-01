@@ -1,15 +1,18 @@
-import { CartCard, CartSidebar } from "components";
+import { CartCard, CartSidebar, DiscountPopup } from "components";
 import { useCart } from "contexts/CartContext";
 import { useState, useEffect } from "react";
 
 export const CartPage = () => {
   const { cart } = useCart();
   const [isShippingFree, setIsShippingFree] = useState(false);
+  const [discountData, setDiscountData] = useState({ showModal: false, code: "" });
   let totalPrice = cart.length > 0 ? cart.reduce((acc, curr) => acc + curr.price * curr.qty, 0) : 0;
+  let finalPrice = isShippingFree ? totalPrice : totalPrice + 50;
+  finalPrice = discountData.code === "SUM10" ? finalPrice - Math.floor(totalPrice / 10) : finalPrice;
 
   useEffect(() => {
-    totalPrice > 1999 ? setIsShippingFree(true) : setIsShippingFree(false);
-  }, [totalPrice]);
+    totalPrice > 1999 || discountData?.code === "FREEDEL" ? setIsShippingFree(true) : setIsShippingFree(false);
+  }, [totalPrice, discountData?.code]);
 
   return (
     <>
@@ -25,7 +28,16 @@ export const CartPage = () => {
             })}
           </section>
         </main>
-        {cart.length > 0 && <CartSidebar totalPrice={totalPrice} isShippingFree={isShippingFree} />}
+        {cart.length > 0 && (
+          <CartSidebar
+            discountData={discountData}
+            setDiscountData={setDiscountData}
+            totalPrice={totalPrice}
+            finalPrice={finalPrice}
+            isShippingFree={isShippingFree}
+          />
+        )}
+        <DiscountPopup discountData={discountData} setDiscountData={setDiscountData} />
       </div>
     </>
   );

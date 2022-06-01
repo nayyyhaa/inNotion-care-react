@@ -12,3 +12,4 @@ export { SiteHeader } from "./SiteHeader";
 export { Toast } from "./Toast";
 export { ProductsListing } from "./ProductsListing";
 export { ProductFilterSidebar } from "./ProductFilterSidebar";
+export { DiscountPopup } from "./DiscountPopup";

@@ -1,6 +1,6 @@
 import { useCart } from "contexts/CartContext";
 import { useWishlist } from "contexts/WishlistContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Card = ({ product }) => {
   const { wishlist, addToWishlist, removeFromWishlist } = useWishlist();
@@ -8,6 +8,7 @@ export const Card = ({ product }) => {
   const cartItem = cart.filter((el) => el._id === product._id)[0];
   const { _id, title, description, image, rating, ratingNo, price, inStock } = product;
   const wishlistIndex = wishlist.findIndex((el) => el._id === product._id);
+  const navigate = useNavigate();
   return (
     <Link
       to={`/product/${_id}`}
@@ -44,12 +45,16 @@ export const Card = ({ product }) => {
               <span className="p-l-1">Add to cart</span>
             </button>
           ) : (
-            <Link to="/cart">
-              <button className="btn primary-btn m-r-1">
-                <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-                <span className="p-l-1">Go to cart</span>
-              </button>
-            </Link>
+            <button
+              className="btn primary-btn m-r-1"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/cart");
+              }}
+            >
+              <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+              <span className="p-l-1">Go to cart</span>
+            </button>
           )}
         </div>
         <div className="card-icons">

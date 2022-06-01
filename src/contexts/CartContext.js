@@ -8,7 +8,7 @@ import { useToast } from "./ToastContext";
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  const { auth, user } = useAuth();
+  const { auth } = useAuth();
   const [cart, dispatchCart] = useReducer(cartReducer, []);
   const { dispatchToast } = useToast();
   const navigate = useNavigate();
