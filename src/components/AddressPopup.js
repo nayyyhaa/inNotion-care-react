@@ -88,7 +88,7 @@ export const AddressPopup = ({ showPopup, setShowPopup }) => {
                   <i className="fa fa-exclamation-circle" aria-hidden="true"></i>Please enter valid input
                 </small>
               </div>
-              <div className="field col-flex w-95p m-v-1">
+              <div className="field address-field col-flex w-95p m-v-1">
                 <label className="m-v-1" htmlFor="address">
                   ADDRESS<span className="mandatory-field">*</span>
                 </label>

@@ -24,7 +24,7 @@ export const CheckoutPage = () => {
       <main className={`cart-container products-content p-h-5 p-v-2 w-50p ${cart.length > 0 ? "" : "m-auto"}`}>
         <div className="row-flex cart-item p-v-2 p-h-4">
           <h2>Contact Information</h2>
-          <button className="btn primary-outline-btn" onClick={() => setShowPopup(true)}>
+          <button className="btn primary-outline-btn m-v-1" onClick={() => setShowPopup(true)}>
             Add New Address
           </button>
         </div>

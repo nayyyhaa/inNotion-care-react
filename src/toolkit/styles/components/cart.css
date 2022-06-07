@@ -80,6 +80,10 @@
   .cart-container {
     min-height: 30vh;
   }
+
+  .address-field {
+    width: 95%;
+  }
 }
 
 @media screen and (max-width: 500px) {
