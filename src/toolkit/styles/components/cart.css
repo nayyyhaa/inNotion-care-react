@@ -1,5 +1,5 @@
 .cart-sidebar {
-  width: 40%;
+  width: 50%;
 }
 
 .card-footer {
@@ -37,11 +37,16 @@
   left: unset;
 }
 
-.discount-box {
+.discount-box,
+.address-box {
   border: 1px solid black;
   border-radius: 0.75rem;
   padding: 1rem;
   width: 30rem;
+}
+
+.address-box {
+  width: 100%;
 }
 
 /*media queries*/

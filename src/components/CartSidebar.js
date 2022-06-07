@@ -1,6 +1,10 @@
+import { useCart } from "contexts/CartContext";
 import { useEffect, useState } from "react";
-export const CartSidebar = ({ totalPrice, finalPrice, isShippingFree, discountData, setDiscountData }) => {
+import { Link, useLocation } from "react-router-dom";
+export const CartSidebar = ({ totalPrice, finalPrice, isShippingFree }) => {
   const [dPrice, setDPrice] = useState(0);
+  const { cart, discountData, setDiscountData } = useCart();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     switch (discountData?.code) {
@@ -17,25 +21,52 @@ export const CartSidebar = ({ totalPrice, finalPrice, isShippingFree, discountDa
 
   return (
     <div className="side-bar cart-sidebar box-shd p-v-5">
-      <ul className="no-bullet col-flex flex-start no-wrap p-h-2 m-b-3">
+      <ul className="no-bullet col-flex flex-start no-wrap p-h-1 m-b-3">
+        {pathname.includes("checkout") && (
+          <li className="cart-item full-wd col-flex p-h-2 m-v-05">
+            {cart?.map((product) => {
+              const { _id, title, image, qty, price } = product;
+              return (
+                <div key={_id} className="justify-start full-wd row-flex no-wrap">
+                  <button className="badge-wrapper primary-icon-btn m-r-1 m-v-1">
+                    <img className="h-5rm w-5rm" src={image} alt={title} />
+                    <span className="badge wt-text grid-ctr green-bg">{qty}</span>
+                  </button>
+                  <p>{title}</p>
+                  <p className="m-l-auto">
+                    <strong>{price}₹</strong>
+                  </p>
+                </div>
+              );
+            })}
+          </li>
+        )}
         <li className="cart-list p-h-2 m-v-2">PRICE DETAILS</li>
         <li className="cart-item full-wd row-flex no-wrap p-h-2 m-v-05">
           <p className="sub-heading">Subtotal</p>
-          <p>{totalPrice * 2} ₹</p>
+          <p>
+            <strong>{totalPrice * 2}₹</strong>
+          </p>
         </li>
         <li className="cart-item full-wd row-flex no-wrap p-h-2 m-v-05">
           <p className="sub-heading">Discount</p>
-          <p className="green-text">(-) {totalPrice} ₹</p>
+          <p>
+            <strong className="green-text">(-) {totalPrice}₹</strong>
+          </p>
         </li>
         {discountData?.code && (
           <li className="cart-item full-wd row-flex no-wrap p-h-2 m-v-05">
             <p className="sub-heading">Coupon ({discountData?.code})</p>
-            <p className="green-text">(-) {dPrice} ₹</p>
+            <p>
+              <strong className="green-text">(-) {dPrice}₹</strong>
+            </p>
           </li>
         )}
         <li className="cart-item full-wd row-flex no-wrap p-h-2 m-v-05">
           <p className="sub-heading">Shipping</p>
-          <p className={isShippingFree ? "green-text" : ""}>{isShippingFree ? `Free` : `(+) 50 ₹`}</p>
+          <p>
+            <strong className={isShippingFree ? "green-text" : ""}>{isShippingFree ? `Free` : `(+) 50₹`}</strong>
+          </p>
         </li>
         <li className="cart-item full-wd row-flex no-wrap p-h-2 m-v-05">
           <label className="field promofield full-wd" htmlFor="promo-text">
@@ -56,12 +87,14 @@ export const CartSidebar = ({ totalPrice, finalPrice, isShippingFree, discountDa
         <li className="line-decoration"></li>
         <li className="cart-item full-wd row-flex no-wrap p-h-2 m-v-1">
           <p className="h3">YOU PAY</p>
-          <p className="h3">{finalPrice} ₹</p>
+          <p className="h3">{finalPrice}₹</p>
         </li>
         <li className="cart-list full-wd p-h-2 m-v-1">
-          <button className="btn primary-btn m-r-1 full-wd">
-            <span className="p-l-1">PLACE ORDER</span>
-          </button>
+          <Link to="/checkout">
+            <button className="btn primary-btn m-r-1 full-wd">
+              <span className="p-l-1">PLACE ORDER</span>
+            </button>
+          </Link>
         </li>
       </ul>
     </div>

@@ -1,7 +1,9 @@
+import { useCart } from "contexts/CartContext";
 import { useState } from "react";
 import { DiscountData } from "toolkit/data/DiscountData";
 
-export const DiscountPopup = ({ discountData, setDiscountData }) => {
+export const DiscountPopup = () => {
+  const { discountData, setDiscountData } = useCart();
   const [code, setCode] = useState(discountData?.code);
 
   return (

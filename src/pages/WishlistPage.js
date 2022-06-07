@@ -1,6 +1,8 @@
+import noData from "toolkit/assets/no-data.svg";
 import { Card } from "components";
 import bathbomb from "toolkit/assets/bath-bomb.jpg";
 import { useWishlist } from "contexts/WishlistContext";
+import { Link } from "react-router-dom";
 
 export const WishlistPage = () => {
   const { wishlist } = useWishlist();
@@ -17,9 +19,22 @@ export const WishlistPage = () => {
         </h2>
         <div className="line-decoration"></div>
         <section className="products-section container card-grid grid-resp-col w-95p">
-          {wishlist?.map((el) => {
-            return <Card key={el._id} product={el} />;
-          })}
+          {wishlist.length > 0 ? (
+            wishlist?.map((el) => {
+              return <Card key={el._id} product={el} />;
+            })
+          ) : (
+            <div className="grid-ctr m-v-5">
+              <img className="w-60p no-video" src={noData} alt="noData" />
+              <p className="m-t-3">No item in wishlist!</p>
+              <p className="m-t-3">
+                Checkout our{" "}
+                <Link to="/products" className="colored-text">
+                  products
+                </Link>
+              </p>
+            </div>
+          )}
         </section>
       </main>
     </>

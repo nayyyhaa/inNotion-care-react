@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { useState, createContext, useContext, useReducer } from "react";
 import { useNavigate } from "react-router-dom";
 import { cartReducer } from "reducers/cartReducer";
 import { addToCartService, getCartService, updateQuantityInCartService, removeFromCartService } from "toolkit/utils";
@@ -10,6 +10,7 @@ const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const { auth } = useAuth();
   const [cart, dispatchCart] = useReducer(cartReducer, []);
+  const [discountData, setDiscountData] = useState({ showModal: false, code: "" });
   const { dispatchToast } = useToast();
   const navigate = useNavigate();
 
@@ -60,7 +61,7 @@ const CartProvider = ({ children }) => {
     }
   };
 
-  const removeFromCart = async (id,e) => {
+  const removeFromCart = async (id, e) => {
     e.preventDefault();
     try {
       if (auth.isAuth) {
@@ -77,7 +78,18 @@ const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cart, dispatchCart, addToCart, updateQuantityInCart, removeFromCart, getCart }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        dispatchCart,
+        addToCart,
+        updateQuantityInCart,
+        removeFromCart,
+        getCart,
+        discountData,
+        setDiscountData,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

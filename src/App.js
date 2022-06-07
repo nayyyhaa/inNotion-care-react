@@ -7,6 +7,7 @@ import {
   ProductListingsPage,
   CartPage,
   SingleProductPage,
+  CheckoutPage,
   PageNotFound,
 } from "./pages";
 import { HeaderAnnouncement, Footer, Navbar, Toast } from "./components";
@@ -55,6 +56,7 @@ function App() {
           <Route path="/wishlist" element={<WishlistPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
         </Route>
         <Route path="/mockman" element={<Mockman />} />
         <Route path="*" element={<PageNotFound />} />

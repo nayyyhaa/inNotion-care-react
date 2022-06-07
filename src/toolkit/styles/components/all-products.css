@@ -29,6 +29,7 @@
 .side-bar {
   position: sticky;
   min-height: 100vh;
+  height: fit-content;
   top: 7vh;
   overflow: hidden;
 }
