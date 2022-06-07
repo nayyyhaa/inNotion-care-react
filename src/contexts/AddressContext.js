@@ -1,16 +1,18 @@
 import { createContext, useContext, useReducer } from "react";
 import { AddressReducer } from "reducers/addressReducer";
 import { v4 as uuid } from "uuid";
+import { useAuth } from "./AuthContext";
 
 const AddressContext = createContext();
 
 const AddressProvider = ({ children }) => {
+  const { user } = useAuth();
   const [address, dispatchAddress] = useReducer(AddressReducer, [
     {
       _id: uuid(),
       firstName: "Neha",
       lastName: "Gupta",
-      email: JSON.parse(localStorage.getItem("user")).email,
+      email: user?.email,
       address: "Flat 55A, Block H, Supertech Apartments",
       city: "Agra",
       state: "Uttar Pradesh",
