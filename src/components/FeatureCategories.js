@@ -7,7 +7,7 @@ export const FeatureCategories = () => {
   const { categories } = useCategories();
   return (
     <section className="section centered-text grid-ctr w-95p m-t-3 m-b-5">
-      <h2 className="title colored-text h1 m-v-1">
+      <h2 className="title h1 m-v-1">
         <span className="circle"></span>Because we <span className="complementary-color-text">Care</span>
       </h2>
       <div className="product-container grid-3-col full-wd m-v-2 m-b-5">

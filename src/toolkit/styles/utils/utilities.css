@@ -42,3 +42,34 @@
   height: 0.1rem;
   margin: 0.5em 0;
 }
+
+.modal {
+  max-width: 43rem;
+  min-height: 50vh;
+  height: fit-content;
+}
+
+.address-modal {
+  max-width: 55rem;
+}
+
+.m-v-05 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.w-5rm {
+  width: 5rem;
+}
+
+.w-45p {
+  width: 45%;
+}
+
+.h-5rm {
+  height: 5rem;
+}
+
+.m-l-auto {
+  margin-left: auto;
+}

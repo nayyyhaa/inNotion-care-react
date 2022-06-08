@@ -22,6 +22,10 @@
   background: var(--COLOR-PRIMARY-XXLIGHT);
 }
 
+.justify-start {
+  justify-content: start;
+}
+
 /*nav*/
 
 .nav-items {

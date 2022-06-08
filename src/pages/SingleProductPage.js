@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useProducts } from "contexts/ProductsContext";
 import { useCart } from "contexts/CartContext";
 import { useWishlist } from "contexts/WishlistContext";
@@ -8,11 +8,10 @@ export const SingleProductPage = () => {
   const { products } = useProducts();
   const { wishlist, addToWishlist, removeFromWishlist } = useWishlist();
   const { cart, addToCart, updateQuantityInCart, removeFromCart } = useCart();
-  //   console.log(id, products, "hi")
   const product = products?.find((product) => product._id === id);
   const productInCart = cart?.find((product) => product._id === id);
-  //   const { _id, title, description, image, rating, ratingNo, price, inStock } = product;
   const wishlistIndex = wishlist.findIndex((el) => el._id === id);
+  const navigate = useNavigate();
 
   return (
     <div className="single-product-container full-wd">
@@ -66,12 +65,16 @@ export const SingleProductPage = () => {
                 <i className="fa fa-plus light-font" aria-hidden="true"></i>
               </button>
             </div>
-            <Link to="/cart">
-              <button className="btn primary-btn full-wd m-r-1">
-                <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-                <span className="p-l-1">Go to cart</span>
-              </button>
-            </Link>
+            <button
+              className="btn primary-btn full-wd m-r-1"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/cart");
+              }}
+            >
+              <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+              <span className="p-l-1">Go to cart</span>
+            </button>
           </>
         )}
         <button
