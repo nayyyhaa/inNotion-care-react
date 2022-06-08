@@ -37,9 +37,6 @@ export const CartPage = () => {
               </p>
             </div>
           )}
-          {/* {cart?.map((product) => (
-            <CartCard key={product._id} product={product} />
-          ))} */}
         </section>
       </main>
       {cart.length > 0 && (
