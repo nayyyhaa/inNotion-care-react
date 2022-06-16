@@ -1,0 +1,23 @@
+.order-user-info {
+  width: 45%;
+}
+
+.order-summary-sidebar {
+  background: var(--COLOR-PRIMARY-XXLIGHT);
+}
+
+@media screen and (max-width: 786px) {
+  .order-summary-sidebar,
+  .order-user-info {
+    width: 100%;
+  }
+
+  .order-user-info {
+    margin: 5rem 0;
+  }
+
+  .order-user-info .address-box {
+    width: 90%;
+    margin: auto;
+  }
+}

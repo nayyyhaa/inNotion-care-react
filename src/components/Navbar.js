@@ -58,7 +58,7 @@ export const Navbar = () => {
               <li key={id} className="nav-icon-btn icon-btn rd-bdr grid-ctr wt-text m-r-3">
                 <Link to={link} className="badge-wrapper grid-ctr">
                   <i className={icon} aria-hidden="true"></i>
-                  <span className="badge wt-text grid-ctr red-content">
+                  <span className="badge icon-badge wt-text grid-ctr red-content">
                     {title === "Wishlist" ? wishlist.length : cart.length}
                   </span>
                   <span className="nav-icon-text h6 cursor wt-text">{title}</span>

@@ -1,7 +1,7 @@
 import { useCategories } from "contexts/CategoriesContext";
 import { useFilter } from "contexts/FilterContext";
 
-export const ProductFilterSidebar = ({ showFilterBar }) => {
+export const ProductFilterSidebar = ({ showFilterBar, setShowFilterBar }) => {
   const { filter, dispatchFilter } = useFilter();
   const { categories } = useCategories();
   const categoriesData = categories.reduce((acc, curr) => [...acc, ...curr.subCategories], []);
@@ -14,7 +14,10 @@ export const ProductFilterSidebar = ({ showFilterBar }) => {
           <p className="clear-all cursor" onClick={() => dispatchFilter({ type: "CLEAR_ALL" })}>
             Clear all
           </p>
-          <p className="icon-toggle icon-btn sidebar-close rd-bdr grid-ctr colored-text">
+          <p
+            className="icon-toggle icon-btn sidebar-close rd-bdr grid-ctr colored-text"
+            onClick={() => setShowFilterBar(false)}
+          >
             <i className="fa fa-close" aria-hidden="true"></i>
           </p>
           <div className="line-decoration"></div>

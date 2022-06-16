@@ -1,4 +1,5 @@
 import { useCart } from "contexts/CartContext";
+import { useToast } from "contexts/ToastContext";
 import { useWishlist } from "contexts/WishlistContext";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -9,6 +10,17 @@ export const Card = ({ product }) => {
   const { _id, title, description, image, rating, ratingNo, price, inStock } = product;
   const wishlistIndex = wishlist.findIndex((el) => el._id === product._id);
   const navigate = useNavigate();
+  const { dispatchToast } = useToast();
+
+  const shareProductLink = (e) => {
+    e.preventDefault();
+    navigator.clipboard.writeText(`https://innotion-carev2.netlify.app/product/${_id}`);
+    dispatchToast({
+      type: "SHOW_TOAST",
+      payload: { state: "success", msg: "Copied link in clipboard!" },
+    });
+  };
+
   return (
     <Link
       to={`/product/${_id}`}
@@ -40,7 +52,10 @@ export const Card = ({ product }) => {
       <div className="card-actions p-2 row-flex full-wd">
         <div className="card-btns">
           {!cartItem ? (
-            <button className="btn primary-btn m-r-1" onClick={(e) => addToCart(product, e)}>
+            <button
+              className={`btn primary-btn m-r-1 ${!inStock ? "disabled-btn" : ""}`}
+              onClick={(e) => addToCart(product, e)}
+            >
               <i className="fa fa-shopping-cart" aria-hidden="true"></i>
               <span className="p-l-1">Add to cart</span>
             </button>
@@ -58,12 +73,12 @@ export const Card = ({ product }) => {
           )}
         </div>
         <div className="card-icons">
-          <button className="card-icon-btn icon-btn rd-bdr">
+          <button className="card-icon-btn icon-btn rd-bdr" onClick={shareProductLink}>
             <i className="fa fa-share-alt" aria-hidden="true"></i>
           </button>
         </div>
       </div>
-      {!inStock && <div className="h3 card-overlay grid-ctr">Sold out!</div>}
+      {!inStock && <span className="badge text-badge badge-card-tr wt-text red-content">Out of Stock</span>}
     </Link>
   );
 };

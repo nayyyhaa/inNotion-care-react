@@ -39,8 +39,12 @@ export const SingleProductPage = () => {
         </div>
         <div className="line-decoration"></div>
         <p className="left-text sub-heading-light m-v-2">{product?.description}</p>
+        <p className="red-text m-v-2"> {!product?.inStock && "Product Out of Stock"}</p>
         {!productInCart ? (
-          <button className="btn primary-btn full-wd m-r-1" onClick={(e) => addToCart(product, e)}>
+          <button
+            className={`btn primary-btn full-wd m-r-1  ${!product?.inStock ? "disabled-btn" : ""}`}
+            onClick={(e) => addToCart(product, e)}
+          >
             <i className="fa fa-shopping-cart" aria-hidden="true"></i>
             <span className="p-l-1">Add to cart</span>
           </button>
@@ -66,7 +70,7 @@ export const SingleProductPage = () => {
               </button>
             </div>
             <button
-              className="btn primary-btn full-wd m-r-1"
+              className={`btn primary-btn full-wd m-r-1 ${!product?.inStock ? "disabled-btn" : ""}`}
               onClick={(e) => {
                 e.preventDefault();
                 navigate("/cart");

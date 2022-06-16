@@ -15,6 +15,7 @@ const WishlistProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const addToWishlist = async (product, e) => {
+    console.log("called");
     e.preventDefault();
     try {
       if (auth.isAuth) {

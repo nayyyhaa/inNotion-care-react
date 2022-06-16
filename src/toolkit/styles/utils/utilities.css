@@ -6,11 +6,16 @@
   height: 30vh;
 }
 
-.badge {
+.icon-badge {
   height: 2rem;
   width: 2rem;
   bottom: 70%;
   left: 65%;
+}
+
+.vd-card .badge-card-tr {
+  right: unset;
+  margin-left: 2rem;
 }
 
 .card-rating-overlay {
@@ -26,12 +31,12 @@
   left: 85%;
   top: 2%;
   color: var(--COLOR-COMPLEMENTARY-DARK);
-  background: transparent;
+  color: var(--RED);
+  background: var(--COLOR-GREY-TRANS);
 }
 
 .heart-btn:hover {
   color: var(--RED);
-  background: var(--COLOR-GREY-TRANS);
 }
 
 .flex-1 {
@@ -72,4 +77,21 @@
 
 .m-l-auto {
   margin-left: auto;
+}
+
+@media screen and (max-width: 1450px) {
+  .grid-4-col {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (max-width: 1350px) {
+  .grid-4-col {
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 450px) {
+  .grid-4-col {
+    gap: 0;
+  }
 }

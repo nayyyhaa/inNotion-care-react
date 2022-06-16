@@ -24,7 +24,7 @@ export const ProductListingsPage = () => {
         <div className="products-banner-text lg-text text-shd">Shop</div>
       </div>
       <div className="shop-layout row-flex no-wrap flex-start">
-        <ProductFilterSidebar showFilterBar={showFilterBar} />
+        <ProductFilterSidebar showFilterBar={showFilterBar} setShowFilterBar={setShowFilterBar} />
         <main className="products-content p-5">
           <div className="products-content-header row-flex p-2">
             <h2>

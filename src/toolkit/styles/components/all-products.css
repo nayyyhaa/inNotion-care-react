@@ -76,6 +76,16 @@
   align-self: center;
 }
 
+.card.disabled {
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.card.disabled .disabled-btn {
+  cursor: deafult !important;
+  pointer-events: none !important;
+}
+
 /*media queries*/
 
 @media screen and (max-width: 1150px) {
