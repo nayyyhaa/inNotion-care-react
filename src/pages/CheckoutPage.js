@@ -22,8 +22,6 @@ export const CheckoutPage = () => {
     totalPrice > 1999 || discountData?.code === "FREEDEL" ? setIsShippingFree(true) : setIsShippingFree(false);
   }, [totalPrice, discountData?.code]);
 
-  console.log(address, address?.length, "d");
-
   return (
     <>
       {cart?.length > 0 ? (

@@ -7,7 +7,6 @@ export const OrderPage = () => {
   const { order } = useOrder();
   const { orderedProducts, paymentId, finalPrice, discountCode, dPrice, currentAddress, totalPrice, isShippingFree } =
     order;
-  console.log(order, paymentId, orderedProducts, currentAddress, "he");
   return (
     <div className="order-page m-v-3">
       {Object.keys(order).length > 0 ? (
