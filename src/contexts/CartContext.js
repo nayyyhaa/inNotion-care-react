@@ -77,6 +77,17 @@ const CartProvider = ({ children }) => {
     }
   };
 
+  const clearCart = async () => {
+    try {
+      cart.forEach(async (el) => {
+        const res = await removeFromCartService(auth.token, el._id);
+        dispatchCart({ type: "SET_ALL_CART", payload: res.cart });
+      });
+    } catch (e) {
+      console.log("clearCart : Error in clearing cart", e);
+    }
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -86,6 +97,7 @@ const CartProvider = ({ children }) => {
         updateQuantityInCart,
         removeFromCart,
         getCart,
+        clearCart,
         discountData,
         setDiscountData,
       }}

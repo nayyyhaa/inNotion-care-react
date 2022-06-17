@@ -9,6 +9,7 @@ import {
   SingleProductPage,
   CheckoutPage,
   PageNotFound,
+  OrderPage,
 } from "./pages";
 import { HeaderAnnouncement, Footer, Navbar, Toast } from "./components";
 import { usePageViewTracker, useAsync, useScrollToTop } from "./toolkit/custom-hooks";
@@ -57,6 +58,7 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/order" element={<OrderPage />} />
         </Route>
         <Route path="/mockman" element={<Mockman />} />
         <Route path="*" element={<PageNotFound />} />

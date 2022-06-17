@@ -7,3 +7,4 @@ export { PageNotFound } from "./PageNotFound";
 export { WishlistPage } from "./WishlistPage";
 export { SingleProductPage } from "./SingleProductPage";
 export { CheckoutPage } from "./CheckoutPage";
+export { OrderPage } from "./OrderPage";

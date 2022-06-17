@@ -12,6 +12,7 @@ import { CategoriesProvider } from "./contexts/CategoriesContext";
 import { AuthProvider } from "contexts/AuthContext";
 import { ToastProvider } from "contexts/ToastContext";
 import { AddressProvider } from "contexts/AddressContext";
+import { OrderProvider } from "contexts/OrderContext";
 // Call make Server
 makeServer();
 
@@ -22,15 +23,17 @@ ReactDOM.render(
         <AuthProvider>
           <AddressProvider>
             <WishlistProvider>
-              <CartProvider>
-                <ProductsProvider>
-                  <CategoriesProvider>
-                    <FilterProvider>
-                      <App />
-                    </FilterProvider>
-                  </CategoriesProvider>
-                </ProductsProvider>
-              </CartProvider>
+              <OrderProvider>
+                <CartProvider>
+                  <ProductsProvider>
+                    <CategoriesProvider>
+                      <FilterProvider>
+                        <App />
+                      </FilterProvider>
+                    </CategoriesProvider>
+                  </ProductsProvider>
+                </CartProvider>
+              </OrderProvider>
             </WishlistProvider>
           </AddressProvider>
         </AuthProvider>
