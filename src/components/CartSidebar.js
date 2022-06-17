@@ -66,9 +66,6 @@ export const CartSidebar = ({ totalPrice, finalPrice, isShippingFree }) => {
         description: "Test Transaction",
         image: compPhoto,
         handler: function (response) {
-          //  alert(response.razorpay_payment_id);
-          //  alert(response.razorpay_order_id);
-          //  alert(response.razorpay_signature);
           const orderData = {
             orderedProducts: [...cart],
             paymentId: response.razorpay_payment_id,
