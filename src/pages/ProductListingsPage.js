@@ -1,4 +1,5 @@
 import { useState } from "react";
+import noData from "toolkit/assets/no-data.svg";
 import bathbomb from "toolkit/assets/bath-bomb.jpg";
 import { Card, ProductFilterSidebar } from "components";
 import { useFilter } from "contexts/FilterContext";
@@ -38,9 +39,16 @@ export const ProductListingsPage = () => {
             </p>
           )}
           <section className="products-section container card-grid grid-resp-col">
-            {finalData?.map((product) => {
-              return <Card key={product._id} product={product} />;
-            })}
+            {finalData.length > 0 ? (
+              finalData.map((product) => {
+                return <Card key={product._id} product={product} />;
+              })
+            ) : (
+              <div className="grid-ctr m-v-5 m-auto">
+                <img className="w-60p no-video" src={noData} alt="noData" />
+                <p className="m-t-3">No item found for {searchIp ? "searched input." : "filtered category."}</p>
+              </div>
+            )}
           </section>
         </main>
       </div>

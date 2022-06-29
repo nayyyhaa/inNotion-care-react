@@ -38,6 +38,11 @@
   overflow-y: scroll;
   height: 80vh;
   overflow-x: hidden;
+  padding-bottom: 3rem;
+}
+
+.sidebar-items .filter-item .sub-heading {
+  cursor: pointer;
 }
 
 .price-range {
