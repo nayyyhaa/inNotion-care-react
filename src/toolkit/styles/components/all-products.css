@@ -155,6 +155,13 @@
   }
 }
 
+@media screen and (max-width: 1300px) {
+  .card-grid.grid-3-col {
+    
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media screen and (max-width: 750px) {
   .card-grid {
     justify-items: center;

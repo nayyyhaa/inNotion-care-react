@@ -26,7 +26,7 @@ export const ProductListingsPage = () => {
       </div>
       <div className="shop-layout row-flex no-wrap flex-start">
         <ProductFilterSidebar showFilterBar={showFilterBar} setShowFilterBar={setShowFilterBar} />
-        <main className="products-content p-5">
+        <main className="products-content p-v-5 p-h-2">
           <div className="products-content-header row-flex p-2">
             <h2>
               Product listing <span className="sub-heading">({finalData.length} items)</span>
@@ -38,14 +38,14 @@ export const ProductListingsPage = () => {
               Searched product: "<span className="colored-text">{searchIp}</span>"
             </p>
           )}
-          <section className="products-section container card-grid grid-resp-col">
+          <section className={`products-section container ${finalData.length > 0 ? "card-grid grid-3-col" : ""}`}>
             {finalData.length > 0 ? (
               finalData.map((product) => {
                 return <Card key={product._id} product={product} />;
               })
             ) : (
               <div className="grid-ctr m-v-5 m-auto">
-                <img className="w-60p no-video" src={noData} alt="noData" />
+                <img className="w-60p no-video p-t-3" src={noData} alt="noData" />
                 <p className="m-t-3">No item found for {searchIp ? "searched input." : "filtered category."}</p>
               </div>
             )}
