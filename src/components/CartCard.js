@@ -10,14 +10,13 @@ export const CartCard = ({ product }) => {
   return (
     <Link to={`/product/${_id}`} className="card hz-card cart-card left-text row-flex text-wrap w-80p h-20rm m-v-2">
       <img className="cart-card-img h-20rm w-35p" src={image} alt={title} />
-      <button className="card-icon-btn cart-wishlist icon-btn rd-bdr heart-btn">
-        <i
-          className={`fa fa-heart${wishlistIndex < 0 ? "-o" : ""}`}
-          onClick={(e) => {
-            wishlistIndex < 0 ? addToWishlist(product, e) : removeFromWishlist(_id, e);
-          }}
-          aria-hidden="true"
-        ></i>
+      <button
+        className="card-icon-btn cart-wishlist icon-btn rd-bdr heart-btn"
+        onClick={(e) => {
+          wishlistIndex < 0 ? addToWishlist(product, e) : removeFromWishlist(_id, e);
+        }}
+      >
+        <i className={`fa fa-heart${wishlistIndex < 0 ? "-o" : ""}`} aria-hidden="true"></i>
       </button>
       <div className="card-header-text cart-card-header h-25rm col-flex flex-start no-wrap">
         <h2 className="card-title h3">{title}</h2>

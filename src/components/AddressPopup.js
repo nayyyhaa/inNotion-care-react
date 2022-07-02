@@ -3,7 +3,6 @@ import { useAuth } from "contexts/AuthContext";
 import { useState, useRef } from "react";
 import { v4 as uuid } from "uuid";
 
-
 export const AddressPopup = ({ showPopup, setShowPopup }) => {
   const { user } = useAuth();
   const initialState = {
@@ -59,6 +58,7 @@ export const AddressPopup = ({ showPopup, setShowPopup }) => {
                   className="input p-07"
                   id="fname"
                   value={form.firstName}
+                  pattern="[a-zA-Z]+"
                   required
                   onChange={(e) => setForm((prev) => ({ ...prev, firstName: e.target.value }))}
                 />
@@ -78,6 +78,7 @@ export const AddressPopup = ({ showPopup, setShowPopup }) => {
                   className="input p-07"
                   id="lname"
                   value={form.lastName}
+                  pattern="[a-zA-Z]+"
                   required
                   onChange={(e) => setForm((prev) => ({ ...prev, lastName: e.target.value }))}
                 />
@@ -116,6 +117,7 @@ export const AddressPopup = ({ showPopup, setShowPopup }) => {
                   className="input p-07"
                   id="city"
                   value={form.city}
+                  pattern="[a-zA-Z]+"
                   required
                   onChange={(e) => setForm((prev) => ({ ...prev, city: e.target.value }))}
                 />
@@ -135,6 +137,7 @@ export const AddressPopup = ({ showPopup, setShowPopup }) => {
                   className="input p-07"
                   id="state"
                   value={form.state}
+                  pattern="[a-zA-Z]+"
                   required
                   onChange={(e) => setForm((prev) => ({ ...prev, state: e.target.value }))}
                 />
@@ -150,10 +153,11 @@ export const AddressPopup = ({ showPopup, setShowPopup }) => {
                   PINCODE<span className="mandatory-field">*</span>
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   className="input p-07"
                   id="pincode"
                   value={form.pincode}
+                  pattern="[0-9]{6}"
                   required
                   onChange={(e) => setForm((prev) => ({ ...prev, pincode: e.target.value }))}
                 />
@@ -169,10 +173,11 @@ export const AddressPopup = ({ showPopup, setShowPopup }) => {
                   PHONE NO.<span className="mandatory-field">*</span>
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   className="input p-07"
                   id="phNo"
                   value={form.phNo}
+                  pattern="[789][0-9]{9}"
                   required
                   onChange={(e) => setForm((prev) => ({ ...prev, phNo: e.target.value }))}
                 />

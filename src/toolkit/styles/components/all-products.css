@@ -38,6 +38,11 @@
   overflow-y: scroll;
   height: 80vh;
   overflow-x: hidden;
+  padding-bottom: 3rem;
+}
+
+.sidebar-items .filter-item .sub-heading {
+  cursor: pointer;
 }
 
 .price-range {
@@ -147,6 +152,13 @@
     height: 5vh;
     background: var(--COLOR-PRIMARY-XLIGHT);
     z-index: 10;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .card-grid.grid-3-col {
+    
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

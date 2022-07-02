@@ -118,7 +118,7 @@ export const ProductFilterSidebar = ({ showFilterBar, setShowFilterBar }) => {
           </li>
           <li className="line-decoration"></li>
           <li className="filter-list p-l-2 m-v-1">RATING</li>
-          {[5, 4, 3, 2, 1].map((rt) => {
+          {[5, 4, 3, 2].map((rt) => {
             return (
               <li key={rt} className="filter-item p-l-2 m-v-05">
                 <label className="categories sub-heading">
@@ -135,7 +135,7 @@ export const ProductFilterSidebar = ({ showFilterBar, setShowFilterBar }) => {
                       })
                     }
                   />
-                  {rt} stars & below
+                  {rt} stars {rt !== 5 && "& above"}
                 </label>
               </li>
             );

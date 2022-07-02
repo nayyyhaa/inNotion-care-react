@@ -27,14 +27,13 @@ export const Card = ({ product }) => {
       className={`card vd-card left-text col-flex flex-start w-30rm m-2 ${!inStock ? "disabled" : ""}`}
     >
       <img className="card-img full-wd" src={image} alt={title} />
-      <button className="card-icon-btn icon-btn rd-bdr heart-btn">
-        <i
-          className={`fa fa-heart${wishlistIndex < 0 ? "-o" : ""}`}
-          onClick={(e) => {
-            wishlistIndex < 0 ? addToWishlist(product, e) : removeFromWishlist(_id, e);
-          }}
-          aria-hidden="true"
-        ></i>
+      <button
+        className="card-icon-btn icon-btn rd-bdr heart-btn"
+        onClick={(e) => {
+          wishlistIndex < 0 ? addToWishlist(product, e) : removeFromWishlist(_id, e);
+        }}
+      >
+        <i className={`fa fa-heart${wishlistIndex < 0 ? "-o" : ""}`} aria-hidden="true"></i>
       </button>
       <div className="card-header-text col-flex flex-start text-wrap p-2">
         <h2 className="card-title h3">{title}</h2>
